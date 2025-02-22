@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/Nitishjhamb/MyPortfolio.git/static/css/main.b578cc43.css",
+    "main.js": "/Nitishjhamb/MyPortfolio.git/static/js/main.98ab93bc.js",
+    "static/js/453.b05d8aa5.chunk.js": "/Nitishjhamb/MyPortfolio.git/static/js/453.b05d8aa5.chunk.js",
+    "static/media/profilepic1.png": "/Nitishjhamb/MyPortfolio.git/static/media/profilepic1.7da5ff1c5659ad226d97.png",
+    "static/media/mockup3.png": "/Nitishjhamb/MyPortfolio.git/static/media/mockup3.a82f3cbfe89290204a7b.png",
+    "static/media/bg-light.png": "/Nitishjhamb/MyPortfolio.git/static/media/bg-light.bac0efb485244a522981.png",
+    "static/media/mockup1.png": "/Nitishjhamb/MyPortfolio.git/static/media/mockup1.38330bd11942fe295a94.png",
+    "static/media/bg-dark.png": "/Nitishjhamb/MyPortfolio.git/static/media/bg-dark.f420c6b8458af72de935.png",
+    "static/media/mockup4.png": "/Nitishjhamb/MyPortfolio.git/static/media/mockup4.a89065a1d627b3931c27.png",
+    "static/media/mockup2.png": "/Nitishjhamb/MyPortfolio.git/static/media/mockup2.7fe2d3b30d5f30e54130.png",
+    "index.html": "/Nitishjhamb/MyPortfolio.git/index.html",
+    "main.b578cc43.css.map": "/Nitishjhamb/MyPortfolio.git/static/css/main.b578cc43.css.map",
+    "main.98ab93bc.js.map": "/Nitishjhamb/MyPortfolio.git/static/js/main.98ab93bc.js.map",
+    "453.b05d8aa5.chunk.js.map": "/Nitishjhamb/MyPortfolio.git/static/js/453.b05d8aa5.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.b578cc43.css",
+    "static/js/main.98ab93bc.js"
+  ]
+}
