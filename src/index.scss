@@ -153,3 +153,11 @@ p, a, h1, h2, h3, h4, h5, label, button {
     }
   }
 }
+@media (max-width: 480px) {
+  body {
+    font-size: 0.9rem !important;
+  }
+  .main-container {
+    padding: 5px;
+  }
+}
