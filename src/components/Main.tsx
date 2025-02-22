@@ -8,6 +8,7 @@ function Main() {
 
   return (
     <div className="container">
+      
       <div className="about-section">
         <div className="image-wrapper">
           <img src={profilepic} alt="Avatar" />

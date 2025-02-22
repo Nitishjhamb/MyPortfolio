@@ -10,7 +10,7 @@ function Footer() {
         <a href="https://github.com/Nitishjhamb" target="_blank" rel="noreferrer"><GitHubIcon/></a>
         <a href="https://www.linkedin.com/in/nitish-jhamb-41980320b/" target="_blank" rel="noreferrer"><LinkedInIcon/></a>
       </div>
-      <p>License 2025 by Nitish Jhamb</p>
+      <p>  © 2025 Nitish Jhamb</p>
     </footer>
   );
 }

@@ -6,6 +6,7 @@
 
 .contact-form {
   padding-top: 20px;
+  color: white;
 
   button {
     float: right;
@@ -19,7 +20,17 @@
   }
 
   fieldset {
-    background-color: white;
+    background-color: transparent;
+  }
+  
+  input,textarea {
+    background-color: #e2dee9;
+    font-weight: 400;
+    font-family: "Lato", sans-serif;
+  }
+
+  textarea {
+    padding: 0.5em;
   }
 }
 
@@ -32,6 +43,10 @@ label {
   display: flex;
   gap: 15px;
   padding-bottom: 15px;
+}
+
+.MuiInputBase-root {
+  padding:0 !important;
 }
 
 .form-flex .MuiFormControl-root {
