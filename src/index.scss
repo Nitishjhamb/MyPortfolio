@@ -145,19 +145,40 @@ p, a, h1, h2, h3, h4, h5, label, button {
     color: #0d1116;
   }
 }
-
-@media screen {
-  @media (max-width: 768px) {
-    .items-container {
-      padding: 5% 5%;
-    }
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .main-container {
+    padding: 15px;
   }
 }
+
+@media (max-width: 768px) {
+  body {
+    font-size: 1rem !important;
+  }
+  .main-container {
+    padding: 10px;
+  }
+  .navigation-bar {
+    flex-direction: column;
+    align-items: center;
+  }
+  .header-image {
+    height: 300px;
+  }
+}
+
 @media (max-width: 480px) {
   body {
     font-size: 0.9rem !important;
   }
   .main-container {
     padding: 5px;
+  }
+  .items-container {
+    padding: 5% 5%;
+  }
+  .header-image {
+    height: 200px;
   }
 }
