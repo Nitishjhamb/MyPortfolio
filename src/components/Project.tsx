@@ -1,4 +1,3 @@
-import React from "react";
 import mockup1 from '../assets/images/mockup1.png';
 import mockup2 from '../assets/images/mockup2.png';
 import mockup3 from '../assets/images/mockup3.png';
@@ -31,8 +30,8 @@ architecture on a cloud platform such as AWS or Azure.</p>
                 <p>An AI-powered chatbot utilizing Google's Gemini API, built with Node.js and Express, offering a seamless and interactive conversation experience.</p>
             </div>
             <div className="project">
-                <a href="#" target="_blank" rel="noreferrer"><img src={mockup1} className="zoom" alt="thumbnail" width="100%"/></a>
-                <a href="#" target="_blank" rel="noreferrer"><h2>Integration EduTech</h2></a>
+                <a target="_blank" rel="noreferrer"><img src={mockup1} className="zoom" alt="thumbnail" width="100%"/></a>
+                <a target="_blank" rel="noreferrer"><h2>Integration EduTech</h2></a>
                 <p>Developed a Website for an Organisation to manage Employes,Client.</p>
             </div>
         </div>
