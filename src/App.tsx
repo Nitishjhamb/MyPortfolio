@@ -1,4 +1,5 @@
-import React, {useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
+import { BrowserRouter as Router, Routes, Route, } from "react-router-dom";
 import {
   Main,
   Timeline,
@@ -8,36 +9,46 @@ import {
   Navigation,
   Footer,
 } from "./components";
+import Resume from "./components/Resume"; 
 import FadeIn from './components/FadeIn';
 import './index.scss';
+
+function Home() {
+    return (
+        <>
+            <Main />
+            <Expertise />
+            <Timeline />
+            <Project />
+            <Contact />
+        </>
+    );
+}
 
 function App() {
     const [mode, setMode] = useState<string>('dark');
 
     const handleModeChange = () => {
-        if (mode === 'dark') {
-            setMode('light');
-        } else {
-            setMode('dark');
-        }
-    }
+        setMode(mode === 'dark' ? 'light' : 'dark');
+    };
 
     useEffect(() => {
-        window.scrollTo({top: 0, left: 0, behavior: 'smooth'});
-      }, []);
+        window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+    }, []);
 
     return (
-    <div className={`main-container ${mode === 'dark' ? 'dark-mode' : 'light-mode'}`}>
-        <Navigation parentToChild={{mode}} modeChange={handleModeChange}/>
-        <FadeIn transitionDuration={700}>
-            <Main/>
-            <Expertise/>
-            <Timeline/>
-            <Project/>
-            <Contact/>
-        </FadeIn>
-        <Footer />
-    </div>
+        <Router>
+            <div className={`main-container ${mode === 'dark' ? 'dark-mode' : 'light-mode'}`}>
+                <Navigation parentToChild={{ mode }} modeChange={handleModeChange} />
+                <FadeIn transitionDuration={700}>
+                    <Routes>
+                        <Route path="/" element={<Home />} />
+                        <Route path="/resume" element={<Resume />} />
+                    </Routes>
+                </FadeIn>
+                <Footer />
+            </div>
+        </Router>
     );
 }
 
