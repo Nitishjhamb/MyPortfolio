@@ -30,11 +30,39 @@
         svg {
             font-size: 1.8em;
         }
+        
+        a {
+            color: white; /* Default color */
+            transition: color 0.3s ease; /* Smooth transition */
+            
+            &:hover {
+                color: #4d9bff; /* Change to your preferred hover color */
+            }
+            
+            &:visited {
+                color: white; /* Keep the original color after visiting */
+            }
+        }
     }
 
     .mobile_social_icons {
         display: none;
+        
+        a {
+            color: white; /* Default color */
+            transition: color 0.3s ease; /* Smooth transition */
+            
+            &:hover {
+                color: #4d9bff; /* Change to your preferred hover color */
+            }
+            
+            &:visited {
+                color: white; /* Keep the original color after visiting */
+            }
+        }
     }
+    
+    
 
     p {
         font-size: 1.5em;

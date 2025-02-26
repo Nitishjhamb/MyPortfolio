@@ -14,7 +14,7 @@ import DarkModeIcon from "@mui/icons-material/DarkMode";
 import LightModeIcon from "@mui/icons-material/LightMode";
 import MenuIcon from "@mui/icons-material/Menu";
 import CloseIcon from "@mui/icons-material/Close";
-import HomeIcon from "@mui/icons-material/Home"; 
+import HomeIcon from '@mui/icons-material/Home';
 
 const navItems = [
     { name: "Expertise", id: "expertise" },
@@ -36,6 +36,7 @@ function Navigation({ parentToChild, modeChange }: any) {
     const handleMenuClose = () => {
         setAnchorEl(null);
     };
+    
     const scrollToSection = (section: string) => {
         handleMenuClose();
         if (location.pathname !== "/") {
@@ -48,18 +49,43 @@ function Navigation({ parentToChild, modeChange }: any) {
         }
     };
 
+    // Function to navigate to home
+    const goHome = () => {
+        navigate("/");
+        setTimeout(() => {
+            window.scrollTo({ top: 0, behavior: "smooth" });
+        }, 100);
+    };
+
     return (
         <Box sx={{ display: "flex" }}>
             <CssBaseline />
             <AppBar component="nav">
-                <Toolbar className="navigation-bar" sx={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-                    <Box sx={{ display: "flex", alignItems: "center" }}>
+                <Toolbar className="navigation-bar" sx={{ 
+                    display: "flex", 
+                    justifyContent: "space-between", 
+                    alignItems: "center" 
+                }}>
+                    
+                    {/* Left section with menu and home icons */}
+                    <Box sx={{ 
+                        display: "flex", 
+                        alignItems: "center",
+                        gap: 1  
+                    }}>
                         {/* Menu Icon for Small Screens */}
                         <IconButton
                             edge="start"
                             color="inherit"
                             aria-label="menu"
-                            sx={{ display: { xs: "block", sm: "none" } }}
+                            sx={{ 
+                                display: { xs: "block", sm: "none" },
+                                width: "40px",
+                                height: "40px",
+                                padding: "8px",
+                                alignItems: "center",
+                                justifyContent: "center" 
+                            }}
                             onClick={handleMenuOpen}
                         >
                             <MenuIcon />
@@ -67,18 +93,28 @@ function Navigation({ parentToChild, modeChange }: any) {
 
                         {/* Home Icon */}
                         <IconButton
-                            edge="start"
                             color="inherit"
                             aria-label="home"
-                            onClick={() => navigate("/")}
-                            sx={{ ml: 2 }}
+                            onClick={goHome}
+                            sx={{
+                                width: "40px",
+                                height: "40px",
+                                padding: "8px",
+                                display: "flex",
+                                alignItems: "center",
+                                justifyContent: "center"
+                            }}
                         >
-                            <HomeIcon fontSize="medium" /> {/* Use the Home icon */}
+                            <HomeIcon />
                         </IconButton>
                     </Box>
 
-                    {/* Desktop Navigation */}
-                    <Box sx={{ display: { xs: "none", sm: "block" } }}>
+                    {/* Desktop Navigation - Middle section */}
+                    <Box sx={{ 
+                        display: { xs: "none", sm: "flex" },
+                        alignItems: "center",
+                        gap: 2  
+                    }}>
                         {navItems.map((item) => (
                             <Button
                                 key={item.name}
@@ -88,15 +124,31 @@ function Navigation({ parentToChild, modeChange }: any) {
                                 {item.name}
                             </Button>
                         ))}
-                        <Button onClick={() => navigate("/resume")} sx={{ color: "#fff" }}>
+                        <Button 
+                            onClick={() => navigate("/resume")} 
+                            sx={{ color: "#fff" }}
+                        >
                             Resume
                         </Button>
                     </Box>
 
-                    {/* Theme Toggle Button */}
-                    <IconButton onClick={modeChange} sx={{ color: "inherit" }}>
-                        {mode === "dark" ? <LightModeIcon /> : <DarkModeIcon />}
-                    </IconButton>
+                    {/* Theme Toggle Button - Right section */}
+                    <Box>
+                        <IconButton 
+                            onClick={modeChange} 
+                            sx={{ 
+                                color: "inherit",
+                                width: "40px",
+                                height: "40px",
+                                padding: "8px",
+                                display: "flex",
+                                alignItems: "center",
+                                justifyContent: "center"
+                            }}
+                        >
+                            {mode === "dark" ? <LightModeIcon /> : <DarkModeIcon />}
+                        </IconButton>
+                    </Box>
                 </Toolbar>
             </AppBar>
 
@@ -123,7 +175,10 @@ function Navigation({ parentToChild, modeChange }: any) {
                         {item.name}
                     </MenuItem>
                 ))}
-                <MenuItem onClick={() => navigate("/resume")} sx={{ py: 1.5 }}>
+                <MenuItem onClick={() => {
+                    handleMenuClose();
+                    navigate("/resume")
+                    }} sx={{ py: 1.5 }}>
                     Resume
                 </MenuItem>
             </Menu>
