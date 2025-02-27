@@ -24,7 +24,7 @@ a {
 }
 
 a:hover {
-  color: #5000ca;
+  color: #5000ca !important;
   transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out;
 }
 
@@ -100,11 +100,11 @@ p, a, h1, h2, h3, h4, h5, label, button {
   }
 
   p, a, h1, h2, h3, h4, h5, label, button {
-    color: #0d1116;
+    color: #0d1116 !important;
   }
 
   a:hover {
-    color: #5000ca;
+    color: #5000ca !important;
     transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out;
   }
 
