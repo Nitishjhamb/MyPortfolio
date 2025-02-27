@@ -64,9 +64,9 @@ This is my personal portfolio website showcasing my skills, projects, and experi
 
 ## Contact
 For any inquiries, feedback, or collaboration opportunities, feel free to reach out:
-- **LinkedIn**: [Your Profile](https://www.linkedin.com/in/nitish-jhamb-41980320b/)
+- **LinkedIn**: https://www.linkedin.com/in/nitish-jhamb-41980320b/
 - **Email**: nitishjhamb20@gmail.com
-- **GitHub**: [Your GitHub](https://github.com/Nitishjhamb)
+- **GitHub**: https://github.com/Nitishjhamb
 
 ---
 **Author**: Nitish  
