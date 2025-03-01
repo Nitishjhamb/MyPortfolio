@@ -1,4 +1,5 @@
 import React, { useRef, useState } from 'react';
+import emailjs from '@emailjs/browser';
 import '../assets/styles/Contact.scss';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
@@ -18,21 +19,36 @@ function Contact() {
   const [emailError, setEmailError] = useState<boolean>(false);
   const [messageError, setMessageError] = useState<boolean>(false);
 
-  const form = useRef();
+  const form = useRef<HTMLFormElement | null>(null);
 
-  const sendEmail = (e: any) => {
+  const sendEmail = (e: React.FormEvent) => {
     e.preventDefault();
 
     setNameError(name === '');
     setEmailError(email === '');
     setMessageError(message === '');
 
-    if (name !== '' && email !== '' && message !== '') {
-      setSuccessMessage(`Thank you, ${name}! Your details have been sent successfully.`);
-      setOpenSnackbar(true);
-      setName('');
-      setEmail('');
-      setMessage('');
+    if (name && email && message) {
+
+      emailjs.sendForm(
+        process.env.REACT_APP_EMAILJS_SERVICE_ID as string,
+        process.env.REACT_APP_EMAILJS_TEMPLATE_ID as string,
+        form.current as HTMLFormElement,
+        process.env.REACT_APP_EMAILJS_PUBLIC_KEY as string
+      )
+      
+        .then(
+          () => {
+            setSuccessMessage(`Thank you, ${name}! Your message has been sent.`);
+            setOpenSnackbar(true);
+            setName('');
+            setEmail('');
+            setMessage('');
+          },
+          (error) => {
+            console.error('EmailJS Error:', error);
+          }
+        );
     }
   };
 
@@ -47,11 +63,13 @@ function Contact() {
             noValidate
             autoComplete="off"
             className='contact-form'
+            onSubmit={sendEmail}
           >
             <div className='form-flex'>
               <TextField
                 required
                 placeholder="What's your name?"
+                name="user_name"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
                 error={nameError}
@@ -60,6 +78,7 @@ function Contact() {
               <TextField
                 required
                 placeholder="Email / Phone"
+                name="user_email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 error={emailError}
@@ -72,12 +91,13 @@ function Contact() {
               multiline
               rows={10}
               className="body-form"
+              name="message"
               value={message}
               onChange={(e) => setMessage(e.target.value)}
               error={messageError}
               helperText={messageError ? "Please enter the message" : ""}
             />
-            <Button variant="contained" endIcon={<SendIcon />} onClick={sendEmail}>
+            <Button type="submit" variant="contained" endIcon={<SendIcon />}>
               Send
             </Button>
           </Box>
