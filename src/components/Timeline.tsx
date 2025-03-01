@@ -16,7 +16,7 @@ function Timeline() {
             className="vertical-timeline-element--education"
             contentStyle={{ background: 'white', color: 'rgb(39, 40, 34)' }}
             contentArrowStyle={{ borderRight: '7px solid  white' }}
-            date="08/2023 - Present"
+            date="2023 - 2025"
             iconStyle={{ background: '#5000ca', color: 'rgb(39, 40, 34)' }}
             icon={<FontAwesomeIcon icon={faGraduationCap} />}
           >
@@ -27,7 +27,7 @@ function Timeline() {
 
           <VerticalTimelineElement
             className="vertical-timeline-element--education"
-            date="08/2019 - 08/2022"
+            date="2019 - 2022"
             iconStyle={{ background: '#5000ca', color: 'rgb(39, 40, 34)' }}
             icon={<FontAwesomeIcon icon={faGraduationCap} />}
           >
