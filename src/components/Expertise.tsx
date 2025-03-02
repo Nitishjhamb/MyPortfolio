@@ -12,24 +12,22 @@ const labelsFirst = [
     "CSS3",
     "SASS",
     "SQL",
-    "Postman"
+    "Netlify"
 ];
 
 const labelsSecond = [
     "Git",
     "GitHub Actions",
     "Docker",
-    "AWS",
-    "Azure"
+    "AWS"
 ];
 
 const labelsThird = [
     "Ubuntu",
-    "Kali Linux",
+    "Linux",
     "Bash Scripting",
     "Nginx",
-    "MySQL",
-    "System Hardening"
+ 
 ];
 
 function Expertise() {

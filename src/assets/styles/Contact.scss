@@ -1,3 +1,4 @@
+/* Dark Mode (Default) */
 .contact_wrapper svg {
   font-size: 1em;
   vertical-align: middle;
@@ -12,45 +13,88 @@
     float: right;
     background-color: white;
     color: #050f0b;
-  }
+    border: 1px solid transparent;
 
-  button:hover {
-    background-color: #5000ca;
-    color: white;
+    &:hover {
+      background-color: #5000ca;
+      color: white;
+      border-color: #5000ca;
+    }
   }
 
   fieldset {
     background-color: transparent;
+    border: 1px solid #bdbdbd;
+    border-radius: 4px;
   }
-  
-  input,textarea {
-    background-color: #ffffff;
+
+  input,
+  textarea {
+    background-color: #1a2027;
+    color: white;
     font-weight: 400;
-    font-family: "Lato", sans-serif;
+    font-family: 'Lato', sans-serif;
+    border: 1px solid #bdbdbd;
+    border-radius: 4px;
+    padding: 8px 12px;
+    &:focus{
+        outline: none;
+        border-color: #5000ca;
+    }
   }
 
   textarea {
-    padding: 0.5em;
+    padding: 12px;
+    resize: vertical;
+  }
+
+  .MuiTextField-root {
+      width: 100%;
+      margin-bottom: 15px;
+  }
+
+  .MuiInputLabel-root {
+      color: #bdbdbd;
+      &.Mui-focused {
+          color: #5000ca;
+      }
+  }
+
+  .MuiOutlinedInput-root {
+      & fieldset {
+          border-color: #bdbdbd;
+      }
+      &:hover fieldset {
+          border-color: white;
+      }
+      &.Mui-focused fieldset {
+          border-color: #5000ca;
+      }
+  }
+
+  .MuiFormHelperText-root {
+      color: #f44336;
   }
 }
 
 label {
   font-size: 1.2rem;
   font-family: 'DomaineDispNar-Medium', sans-serif;
+  color: #bdbdbd;
 }
 
 .form-flex {
   display: flex;
   gap: 15px;
   padding-bottom: 15px;
+
+  .MuiTextField-root {
+      width: 100%;
+  }
 }
 
 .MuiInputBase-root {
-  padding:0 !important;
-}
-
-.form-flex .MuiFormControl-root {
-  width: 100%;
+  padding: 0 !important;
 }
 
 form {
@@ -60,4 +104,60 @@ form {
 .body-form {
   width: 100% !important;
   margin-bottom: 15px !important;
+}
+
+/* Light Mode */
+.light-mode {
+  .contact-form {
+    color: #050f0b; // Dark text
+
+    button {
+      background-color: #ffffff; // Dark button background
+      color: white; // Light button text
+      border-color: #ffffff; // Dark border
+      &:hover{
+        background-color: #5000ca;
+        border-color: #5000ca;
+        color: white;
+      }
+    }
+
+    fieldset {
+      border-color: #ccc; // Light border
+    }
+
+    input,
+    textarea {
+      background-color: #f0f0f0; // Light background
+      color: #050f0b; // Dark text
+      border-color: #ccc; // Light border
+    }
+
+    .MuiInputLabel-root {
+      color: #777; // Darker label in light mode
+    }
+
+    .MuiOutlinedInput-root {
+      & fieldset {
+        border-color: #ccc; // Light border
+      }
+      &:hover fieldset {
+        border-color: #555; // Slightly darker hover border
+      }
+    }
+  }
+
+  label {
+    color: #555; // Darker label
+  }
+}
+
+body.light-mode{
+    background-color: white;
+    color: black;
+}
+
+#contact.light-mode{
+    background-color: white;
+    color: black;
 }
