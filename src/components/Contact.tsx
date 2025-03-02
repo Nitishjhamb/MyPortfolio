@@ -36,7 +36,7 @@ function Contact() {
         form.current as HTMLFormElement,
         process.env.REACT_APP_EMAILJS_PUBLIC_KEY as string
       )
-      
+            
         .then(
           () => {
             setSuccessMessage(`Thank you, ${name}! Your message has been sent.`);
