@@ -13,10 +13,10 @@ import Resume from "./components/Resume";
 import FadeIn from './components/FadeIn';
 import './index.scss';
 
-function Home() {
+function Home({parentToChild}:any) {
     return (
         <>
-            <Main />
+            <Main parentToChild={parentToChild}/>
             <Expertise />
             <Timeline />
             <Project />
@@ -42,7 +42,7 @@ function App() {
                 <Navigation parentToChild={{ mode }} modeChange={handleModeChange} />
                 <FadeIn transitionDuration={700}>
                     <Routes>
-                        <Route path="/" element={<Home />} />
+                        <Route path="/" element={<Home parentToChild={{ mode }}/>} />
                         <Route path="/resume" element={<Resume />} />
                     </Routes>
                 </FadeIn>

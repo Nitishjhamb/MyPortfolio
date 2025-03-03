@@ -19,7 +19,8 @@ const labelsSecond = [
     "Git",
     "GitHub Actions",
     "Docker",
-    "AWS"
+    "AWS",
+    "Jenkins"
 ];
 
 const labelsThird = [
@@ -27,6 +28,7 @@ const labelsThird = [
     "Linux",
     "Bash Scripting",
     "Nginx",
+   
  
 ];
 
