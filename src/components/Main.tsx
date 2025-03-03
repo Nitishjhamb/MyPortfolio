@@ -27,8 +27,7 @@ function Main({parentToChild}:any) {
     // Cleanup
     return () => mediaQuery.removeEventListener('change', handleChange);
   }, []);
-  
-  console.log("Dark mode enabled:", isDarkMode);  
+   
   return (
     <div className={`container ${isDarkMode ? 'dark-mode' : 'light-mode'}`}> 
       <div className="about-section">
