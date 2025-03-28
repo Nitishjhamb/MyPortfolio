@@ -57,7 +57,7 @@ function Project() {
         </div>
         <div className="project">
           <a
-            href="https://github.com/Nitishjhamb/generative-ai.git"
+            href="https://github.com/Nitishjhamb/ChatVaani.git"
             target="_blank"
             rel="noreferrer"
           >
