@@ -1,5 +1,5 @@
 // hooks/useTypewriter.ts
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 
 export function useTypewriter(
   texts: string | string[],
@@ -23,7 +23,12 @@ export function useTypewriter(
   const [isDeleting, setIsDeleting] = useState(false);
   const [currentTextIndex, setCurrentTextIndex] = useState(0);
 
-  const textsArray = Array.isArray(texts) ? texts : [texts];
+  // Wrap textsArray in useMemo to prevent unnecessary recalculations
+  const textsArray = useMemo(
+    () => (Array.isArray(texts) ? texts : [texts]),
+    [texts]
+  );
+
   const currentText = textsArray[currentTextIndex];
 
   useEffect(() => {
