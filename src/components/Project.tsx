@@ -57,14 +57,14 @@ function Project() {
         </div>
         <div className="project">
           <a
-            href="https://github.com/Nitishjhamb/ChatVaani.git"
+            href="https://chatvaani.netlify.app/"
             target="_blank"
             rel="noreferrer"
           >
             <img src={mockup2} className="zoom" alt="thumbnail" width="100%" />
           </a>
           <a
-            href="https://github.com/Nitishjhamb/ChatVaani.git"
+            href="https://chatvaani.netlify.app/"
             target="_blank"
             rel="noreferrer"
           >
