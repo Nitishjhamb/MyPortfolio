@@ -10,13 +10,15 @@ function Project() {
       <h1>Personal Projects</h1>
       <div className="projects-grid">
         <div className="project">
-          <a
-            href="https://github.com/Nitishjhamb/automation-react-project.git"
-            target="_blank"
-            rel="noreferrer"
-          >
-            <img src={mockup4} className="zoom" alt="thumbnail" width="100%" />
-          </a>
+          <div className="image-container">
+            <a
+              href="https://github.com/Nitishjhamb/automation-react-project.git"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <img src={mockup4} className="zoom" alt="thumbnail" />
+            </a>
+          </div>
           <a
             href="https://github.com/Nitishjhamb/automation-react-project.git"
             target="_blank"
@@ -34,13 +36,15 @@ function Project() {
           </p>
         </div>
         <div className="project">
-          <a
-            href="https://www.aquila-cms.com/demo#"
-            target="_blank"
-            rel="noreferrer"
-          >
-            <img src={mockup3} className="zoom" alt="thumbnail" width="100%" />
-          </a>
+          <div className="image-container">
+            <a
+              href="https://www.aquila-cms.com/demo#"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <img src={mockup3} className="zoom" alt="thumbnail" />
+            </a>
+          </div>
           <a
             href="https://www.aquila-cms.com/demo#"
             target="_blank"
@@ -56,13 +60,15 @@ function Project() {
           </p>
         </div>
         <div className="project">
-          <a
-            href="https://chatvaani.netlify.app/"
-            target="_blank"
-            rel="noreferrer"
-          >
-            <img src={mockup2} className="zoom" alt="thumbnail" width="100%" />
-          </a>
+          <div className="image-container">
+            <a
+              href="https://chatvaani.netlify.app/"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <img src={mockup2} className="zoom" alt="thumbnail" />
+            </a>
+          </div>
           <a
             href="https://chatvaani.netlify.app/"
             target="_blank"
@@ -81,13 +87,15 @@ function Project() {
           </p>
         </div>
         <div className="project">
-          <a
-            href="https://github.com/Nitishjhamb"
-            target="_blank"
-            rel="noreferrer"
-          >
-            <img src={mockup1} className="zoom" alt="thumbnail" width="100%" />
-          </a>
+          <div className="image-container">
+            <a
+              href="https://github.com/Nitishjhamb"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <img src={mockup1} className="zoom" alt="thumbnail" />
+            </a>
+          </div>
           <a
             href="https://github.com/Nitishjhamb"
             target="_blank"
