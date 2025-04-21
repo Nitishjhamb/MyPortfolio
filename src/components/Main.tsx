@@ -21,9 +21,9 @@ function Main({ parentToChild }: any) {
 
   // Typewriter effect for titles (looping)
   const titles = [
-    "Cloud Infrastructure & Linux Administrator",
-    "AWS | Azure | GCP Enthusiast",
-    "DevOps Engineer",
+    "System Administrator",
+    "AWS | Azure Cloud Enthusiast",
+    "DevOps Practitioner",
     "Open Source Contributor",
     "Tech Enthusiast",
   ];
