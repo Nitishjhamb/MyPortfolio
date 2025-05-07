@@ -3,9 +3,9 @@ import "../assets/styles/Resume.scss";
 
 const Resume: React.FC = () => {
   const googleDrivePdfUrl =
-    "https://drive.google.com/file/d/1HfBEHKRJAeqYvn6mCnplxJ7dkKlKWMDN/preview";
+    "https://drive.google.com/file/d/1wV91JJUnBXeWXiGCXBulgdkJaKsg6EF9/preview";
   const googleDriveDownloadUrl =
-    "https://drive.google.com/uc?export=download&id=1HfBEHKRJAeqYvn6mCnplxJ7dkKlKWMDN";
+    "https://drive.google.com/uc?export=download&id=1wV91JJUnBXeWXiGCXBulgdkJaKsg6EF9";
 
   const [isMobile, setIsMobile] = useState<boolean>(window.innerWidth < 768);
 
