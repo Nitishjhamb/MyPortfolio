@@ -2,6 +2,7 @@ import mockup1 from "../assets/images/mockup1.png";
 import mockup2 from "../assets/images/mockup2.png";
 import mockup3 from "../assets/images/mockup3.png";
 import mockup4 from "../assets/images/mockup4.png";
+import mockup5 from "../assets/images/mockup5.png"; // Add new image for Azure Translator
 import "../assets/styles/Project.scss";
 
 function Project() {
@@ -35,6 +36,7 @@ function Project() {
             vulnerabilities across the development lifecycle.
           </p>
         </div>
+
         <div className="project">
           <div className="image-container">
             <a
@@ -59,6 +61,7 @@ function Project() {
             on a cloud platform such as AWS or Azure.
           </p>
         </div>
+
         <div className="project">
           <div className="image-container">
             <a
@@ -84,6 +87,31 @@ function Project() {
             activities. Whether it's fetching information, helping with
             reminders, or engaging in meaningful conversations, ChatVaani AI Bot
             ensures an intuitive, responsive, and human-like experience.
+          </p>
+        </div>
+        <div className="project">
+          <div className="image-container">
+            <a
+              href="https://azure-translator.onrender.com/"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <img src={mockup5} className="zoom" alt="Azure Translator" />
+            </a>
+          </div>
+          <a
+            href="https://azure-translator.onrender.com/"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <h2>Azure Translator</h2>
+          </a>
+          <p>
+            Azure Translator is a web-based translation application built using
+            Azure Cognitive Services. It enables users to translate text between
+            more than 100 languages in real-time. The project demonstrates the
+            integration of Azure Translator REST API with a user-friendly front
+            end.
           </p>
         </div>
         <div className="project">
