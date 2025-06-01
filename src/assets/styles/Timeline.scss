@@ -1,38 +1,209 @@
-.vertical-timeline span {
-    color: white;
-    font-family: 'Courier Prime', monospace;
+/* ---------- BASE STYLES ---------- */
+.vertical-timeline-element-content {
+  border-radius: 20px;
+  backdrop-filter: blur(22px);
+  -webkit-backdrop-filter: blur(22px);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  padding: 24px 32px;
+  margin-left: 0;
+  margin-right: 0;
 }
 
-.vertical-timeline p {
-    color: rgb(39, 40, 34);
+.vertical-timeline-element-content:hover {
+  transform: scale(1.04);
+  box-shadow: 0 18px 55px rgba(0, 0, 0, 0.45);
 }
 
-.vertical-timeline-element p {
-    color: rgb(39, 40, 34);
+/* ---------- TIMELINE ICON STYLES ---------- */
+.vertical-timeline-element-icon {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 40px !important;
+  height: 40px !important;
+  border-radius: 50% !important;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  transition: all 0.3s ease;
+  position: absolute !important;
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+  overflow: hidden !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
 }
 
-.vertical-timeline-element h3 {
-    color: rgb(39, 40, 34);
+.vertical-timeline-element-icon:hover {
+  transform: translateX(-50%) scale(1.1) !important;
 }
 
-.vertical-timeline-element h4 {
-    color: rgb(39, 40, 34);
+.vertical-timeline-element-icon .svg-inline--fa,
+.vertical-timeline-element-icon svg,
+.vertical-timeline-element-icon i {
+  font-size: 16px !important;
+  width: 16px !important;
+  height: 16px !important;
+  position: absolute !important;
+  top: 50% !important;
+  left: 50% !important;
+  transform: translate(-50%, -50%) !important;
+  transition: color 0.3s ease;
+  margin: 0 !important;
+  padding: 0 !important;
 }
 
-.vertical-timeline-element span {
-    color: rgb(39, 40, 34);
+/* Fix for react-vertical-timeline-component specific alignment */
+.vertical-timeline::before {
+  left: 50% !important;
+  transform: translateX(-50%) !important;
 }
 
-.vertical-timeline-element .vertical-timeline-element-date {
-    color: white;
+.vertical-timeline-element:nth-child(odd) .vertical-timeline-element-icon,
+.vertical-timeline-element:nth-child(even) .vertical-timeline-element-icon {
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+  margin-left: 0 !important;
 }
 
-.svg-inline--fa {
-    color: white;
+.vertical-timeline-element:nth-child(odd) .vertical-timeline-element-icon:hover,
+.vertical-timeline-element:nth-child(even)
+  .vertical-timeline-element-icon:hover {
+  transform: translateX(-50%) scale(1.1) !important;
 }
 
-@media screen and (max-width: 1170px) {
-    .vertical-timeline-element .vertical-timeline-element-date {
-        color: rgb(39, 40, 34);
-    }
+/* Alternative sizing for larger icons if needed */
+.vertical-timeline-element-icon.large {
+  width: 50px !important;
+  height: 50px !important;
+}
+
+.vertical-timeline-element-icon.large .svg-inline--fa,
+.vertical-timeline-element-icon.large svg,
+.vertical-timeline-element-icon.large i {
+  font-size: 20px !important;
+  width: 20px !important;
+  height: 20px !important;
+}
+
+/* ---------- DEFAULT STYLES ---------- */
+/* Base styles without theme specificity */
+.vertical-timeline-element-content {
+  /* Theme-specific styles are handled by .dark-mode and .light-mode classes */
+}
+
+/* ---------- DARK MODE STYLES ---------- */
+/* When main container has dark-mode class */
+.dark-mode {
+  .vertical-timeline-element-content {
+    background: linear-gradient(
+      135deg,
+      rgba(71, 110, 237, 0.793),
+      /* deep purple */ rgba(199, 46, 143, 0.753) /* magenta */
+    );
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.35);
+  }
+
+  .vertical-timeline-element-title,
+  .vertical-timeline-element-subtitle,
+  .vertical-timeline-element p,
+  .vertical-timeline-element span,
+  .vertical-timeline-element-date {
+    color: #f1f1f1;
+  }
+
+  .vertical-timeline-element-icon {
+    background: linear-gradient(
+      135deg,
+      rgba(71, 110, 237, 0.9),
+      rgba(199, 46, 143, 0.8)
+    );
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+  }
+
+  .svg-inline--fa,
+  .vertical-timeline-element-icon .svg-inline--fa,
+  .vertical-timeline-element-icon svg,
+  .vertical-timeline-element-icon i {
+    color: #fff;
+  }
+}
+
+/* ---------- LIGHT MODE STYLES (EXPLICIT) ---------- */
+/* When main container has light-mode class */
+.light-mode {
+  .vertical-timeline-element-content {
+    background: linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.97),
+      /* white */ rgba(230, 230, 250, 0.8) /* lavender */
+    );
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  }
+
+  .vertical-timeline-element-title,
+  .vertical-timeline-element-subtitle,
+  .vertical-timeline-element p,
+  .vertical-timeline-element span,
+  .vertical-timeline-element-date {
+    color: #222;
+  }
+
+  .vertical-timeline-element-icon {
+    background: linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.95),
+      rgba(230, 230, 250, 0.9)
+    );
+    border: 2px solid rgba(80, 0, 202, 0.2);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+  }
+
+  .svg-inline--fa,
+  .vertical-timeline-element-icon .svg-inline--fa,
+  .vertical-timeline-element-icon svg,
+  .vertical-timeline-element-icon i {
+    color: #0d1116;
+  }
+}
+
+/* ---------- RESPONSIVENESS FIXES ---------- */
+.vertical-timeline {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+@media (max-width: 768px) {
+  .vertical-timeline-element-icon {
+    left: 0 !important;
+    transform: none !important;
+    margin-left: 0 !important;
+    width: 32px !important;
+    height: 32px !important;
+  }
+  .vertical-timeline-element-icon.large {
+    width: 36px !important;
+    height: 36px !important;
+  }
+  .vertical-timeline-element-icon .svg-inline--fa,
+  .vertical-timeline-element-icon svg,
+  .vertical-timeline-element-icon i {
+    font-size: 14px !important;
+    width: 14px !important;
+    height: 14px !important;
+  }
+  .vertical-timeline-element-content {
+    margin-left: 48px;
+    margin-right: 0;
+    padding: 18px 12px;
+  }
+  .vertical-timeline::before {
+    left: 16px !important;
+    transform: none !important;
+  }
 }
