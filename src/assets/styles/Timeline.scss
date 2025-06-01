@@ -61,7 +61,7 @@
 
 .vertical-timeline-element:nth-child(odd) .vertical-timeline-element-icon,
 .vertical-timeline-element:nth-child(even) .vertical-timeline-element-icon {
-  left: 50% !important;
+  //left: 50% !important;
   transform: translateX(-50%) !important;
   margin-left: 0 !important;
 }
@@ -84,12 +84,6 @@
   font-size: 20px !important;
   width: 20px !important;
   height: 20px !important;
-}
-
-/* ---------- DEFAULT STYLES ---------- */
-/* Base styles without theme specificity */
-.vertical-timeline-element-content {
-  /* Theme-specific styles are handled by .dark-mode and .light-mode classes */
 }
 
 /* ---------- DARK MODE STYLES ---------- */
@@ -170,40 +164,65 @@
   }
 }
 
-/* ---------- RESPONSIVENESS FIXES ---------- */
-.vertical-timeline {
-  width: 100%;
-  max-width: 900px;
-  margin: 0 auto;
-  padding: 0 16px;
-}
-
+//* ---------- RESPONSIVENESS FIXES ---------- */
 @media (max-width: 768px) {
-  .vertical-timeline-element-icon {
-    left: 0 !important;
-    transform: none !important;
-    margin-left: 0 !important;
-    width: 32px !important;
-    height: 32px !important;
+  /* Timeline line adjustment */
+  .vertical-timeline::before {
+    left: 28px !important;
   }
-  .vertical-timeline-element-icon.large {
+
+  /* Icon container adjustments - ensure visibility */
+  .vertical-timeline-element-icon {
+    left: 28px !important;
+    transform: none !important;
     width: 36px !important;
     height: 36px !important;
+    /* Add these to ensure visibility */
+    z-index: 1 !important;
+    opacity: 1 !important;
+    visibility: visible !important;
   }
+
+  /* Icon content adjustments */
   .vertical-timeline-element-icon .svg-inline--fa,
   .vertical-timeline-element-icon svg,
   .vertical-timeline-element-icon i {
-    font-size: 14px !important;
-    width: 14px !important;
-    height: 14px !important;
+    font-size: 16px !important;
+    width: 16px !important;
+    height: 16px !important;
+    /* Ensure icon is visible */
+    display: block !important;
   }
+
+  /* Content positioning */
   .vertical-timeline-element-content {
-    margin-left: 48px;
-    margin-right: 0;
-    padding: 18px 12px;
+    margin-left: 70px !important;
+    padding: 20px !important;
   }
+
+  /* Ensure all elements follow the same pattern */
+  .vertical-timeline-element:nth-child(odd) .vertical-timeline-element-content,
+  .vertical-timeline-element:nth-child(even)
+    .vertical-timeline-element-content {
+    margin-left: 70px !important;
+    margin-right: 0 !important;
+  }
+}
+
+/* Additional small screen adjustments */
+@media (max-width: 480px) {
+  .vertical-timeline-element-icon {
+    width: 32px !important;
+    height: 32px !important;
+    left: 24px !important;
+  }
+
+  .vertical-timeline-element-content {
+    margin-left: 60px !important;
+    padding: 16px 12px !important;
+  }
+
   .vertical-timeline::before {
-    left: 16px !important;
-    transform: none !important;
+    left: 24px !important;
   }
 }
