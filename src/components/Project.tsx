@@ -92,7 +92,7 @@ function Project() {
         <div className="project">
           <div className="image-container">
             <a
-              href="https://azure-translator.onrender.com/"
+              href="https://azure-translator-eight.vercel.app/"
               target="_blank"
               rel="noreferrer"
             >
@@ -100,7 +100,7 @@ function Project() {
             </a>
           </div>
           <a
-            href="https://azure-translator.onrender.com/"
+            href="https://azure-translator-eight.vercel.app/"
             target="_blank"
             rel="noreferrer"
           >
