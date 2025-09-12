@@ -1,38 +1,50 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import "../assets/styles/Resume.scss";
+import page1 from "../assets/images/resume-page1.jpg";
+import page2 from "../assets/images/resume-page2.jpg";
 
 const Resume: React.FC = () => {
-  const googleDrivePdfUrl =
-    "https://drive.google.com/file/d/1tA-2jg9N_Bkmx3hI5tjO_1S3RvK9IsFf/preview";
-  const googleDriveDownloadUrl =
-    "https://drive.google.com/uc?export=download&id=1tA-2jg9N_Bkmx3hI5tjO_1S3RvK9IsFf";
-
-  const [isMobile, setIsMobile] = useState<boolean>(window.innerWidth < 768);
-
-  useEffect(() => {
-    const handleResize = () => {
-      setIsMobile(window.innerWidth < 768);
-    };
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
+  const [flipped, setFlipped] = useState(false);
 
   return (
-    <div className={`resume-container ${isMobile ? "mobile" : "desktop"}`}>
-      <h2 className="resume-title">My Resume</h2>
+    <div className="resume-container">
+      <div className="resume-content">
+        <h2 className="resume-title">My Resume</h2>
 
-      <div className="resume-iframe-container">
-        <iframe
-          src={googleDrivePdfUrl}
-          className="resume-iframe"
-          title="Resume"
-          allow="autoplay"
-        ></iframe>
+        {/* Flip Card */}
+        <div className="flip-card" onClick={() => setFlipped(!flipped)}>
+          <div className={`flip-card-inner ${flipped ? "flipped" : ""}`}>
+            {/* Front */}
+            <div className="flip-card-front">
+              <img
+                src={page1}
+                alt="Resume Page 1"
+                className="flip-card-image"
+              />
+            </div>
+
+            {/* Back */}
+            <div className="flip-card-back">
+              <img
+                src={page2}
+                alt="Resume Page 2"
+                className="flip-card-image"
+              />
+            </div>
+          </div>
+        </div>
+
+        {/* Download Button */}
+        <div className="download-container">
+          <a
+            href="/resume.pdf"
+            download="Nitish_Resume.pdf"
+            className="download-button"
+          >
+            Download Resume
+          </a>
+        </div>
       </div>
-
-      <a href={googleDriveDownloadUrl} download>
-        <button className="resume-button">Download Resume</button>
-      </a>
     </div>
   );
 };

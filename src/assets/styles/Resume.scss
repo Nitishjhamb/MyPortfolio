@@ -1,69 +1,192 @@
+// Resume Container - Main wrapper
 .resume-container {
-    text-align: center;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-    overflow: hidden;
-    padding: 20px;
-  
-    &.mobile {
-      padding: 10px;
-    }
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  padding-top: 6rem; // Space for fixed navbar
+  box-sizing: border-box;
+
+  @media (max-width: 639px) {
+    padding: 0.75rem;
+    padding-top: 5rem; // Smaller navbar space on mobile
+    align-items: flex-start;
   }
-  
-  .resume-title {
+
+  @media (min-width: 768px) {
+    padding-top: 7rem; // More space on larger screens if needed
+  }
+}
+
+// Resume Content - Inner content wrapper
+.resume-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  width: 100%;
+  max-width: 600px;
+
+  @media (max-width: 639px) {
+    gap: 1.5rem;
+    max-width: 100%;
+  }
+}
+
+// Resume Title
+.resume-title {
+  font-size: 1.5rem;
+  color: #ffffff;
+  font-weight: 600;
+  text-align: center;
+  margin: 0;
+  line-height: 1.2;
+
+  @media (min-width: 640px) {
     font-size: 2rem;
-    margin-bottom: 15px;
-    margin-top: 50px;
-    color: white;
-  
-    @media (max-width: 768px) {
-      font-size: 1.5rem;
-    }
   }
-  
-  .resume-iframe-container {
-    width: 80%;
-    max-width: 900px;
-    height: 85vh;
-    margin-top: 10px;
-    border-radius: 10px;
-    overflow: hidden;
-  
-    @media (max-width: 768px) {
-      width: 95%;
-      height: 65vh;
-    }
+
+  @media (max-width: 639px) {
+    font-size: 1.25rem;
   }
-  
-  .resume-iframe {
-    width: 100%;
-    height: 100%;
-    border: none;
-    border-radius: 10px;
+}
+
+// Flip Card Container
+.flip-card {
+  width: 280px;
+  height: 396px;
+  perspective: 1000px;
+  cursor: pointer;
+  position: relative;
+
+  @media (min-width: 640px) {
+    width: 300px;
+    height: 424px;
   }
-  
-  .resume-button {
-    margin-top: 15px;
-    padding: 12px 24px;
-    font-size: 16px;
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    cursor: pointer;
-    border-radius: 5px;
-    transition: 0.3s;
-  
-    &:hover {
-      background-color: #0056b3;
-    }
-  
-    @media (max-width: 768px) {
-      font-size: 14px;
-      width: 90%;
-      padding: 10px 18px;
-    }
+
+  @media (min-width: 768px) {
+    width: 400px;
+    height: 565px;
   }
-  
+
+  @media (max-width: 479px) {
+    width: 260px;
+    height: 367px;
+  }
+}
+
+// Flip Card Inner Animation
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  transform-style: preserve-3d;
+  border-radius: 12px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+
+  &.flipped {
+    transform: rotateY(180deg);
+  }
+}
+
+// Flip Card Faces
+.flip-card-front,
+.flip-card-back {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #ffffff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.flip-card-back {
+  transform: rotateY(180deg);
+}
+
+// Card Images
+.flip-card-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+// Download Button Container
+.download-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+// Download Button
+.download-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #2563eb;
+  color: #ffffff;
+  font-weight: 500;
+  padding: 0.875rem 2rem;
+  border-radius: 50px;
+  box-shadow: 0 4px 14px rgba(37, 99, 235, 0.3);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  font-size: 1rem;
+  line-height: 1.5;
+  text-align: center;
+  text-decoration: none;
+  min-width: 180px;
+  border: 2px solid transparent;
+  white-space: nowrap;
+
+  &:hover {
+    background-color: #ffffff;
+    color: #2563eb;
+    border-color: #2563eb;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(37, 99, 235, 0.4);
+  }
+
+  &:active {
+    transform: translateY(0);
+    transition-duration: 0.1s;
+  }
+
+  @media (max-width: 639px) {
+    padding: 0.75rem 1.5rem;
+    font-size: 0.9rem;
+    min-width: 160px;
+  }
+
+  @media (max-width: 479px) {
+    padding: 0.75rem 1.25rem;
+    font-size: 0.875rem;
+    min-width: 140px;
+  }
+}
+
+// Hover effects for the flip card
+.flip-card:hover .flip-card-inner {
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.2);
+}
+
+// Focus states for accessibility
+.flip-card:focus {
+  outline: 2px solid #2563eb;
+  outline-offset: 4px;
+}
+
+.download-button:focus {
+  outline: 2px solid #ffffff;
+  outline-offset: 2px;
+}
