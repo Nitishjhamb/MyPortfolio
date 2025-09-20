@@ -1,43 +1,31 @@
-import React, { useState } from "react";
+import React from "react";
 import "../assets/styles/Resume.scss";
-import page1 from "../assets/images/resume-page1.jpg";
-import page2 from "../assets/images/resume-page2.jpg";
 
 const Resume: React.FC = () => {
-  const [flipped, setFlipped] = useState(false);
+  // Your actual Google Drive file ID
+  const fileId = "1xDlDs15Fj8cEtzsxPtNiLWHLfK9xIIOp";
+  const previewUrl = `https://drive.google.com/file/d/${fileId}/preview`;
+  const downloadUrl = `https://drive.google.com/uc?export=download&id=${fileId}`;
 
   return (
     <div className="resume-container">
       <div className="resume-content">
         <h2 className="resume-title">My Resume</h2>
 
-        {/* Flip Card */}
-        <div className="flip-card" onClick={() => setFlipped(!flipped)}>
-          <div className={`flip-card-inner ${flipped ? "flipped" : ""}`}>
-            {/* Front */}
-            <div className="flip-card-front">
-              <img
-                src={page1}
-                alt="Resume Page 1"
-                className="flip-card-image"
-              />
-            </div>
-
-            {/* Back */}
-            <div className="flip-card-back">
-              <img
-                src={page2}
-                alt="Resume Page 2"
-                className="flip-card-image"
-              />
-            </div>
-          </div>
+        {/* Resume Viewer (Google Drive Preview) */}
+        <div className="resume-viewer">
+          <iframe
+            src={previewUrl}
+            className="resume-iframe"
+            title="Resume Viewer"
+            allow="autoplay"
+          />
         </div>
 
         {/* Download Button */}
         <div className="download-container">
           <a
-            href="/resume.pdf"
+            href={downloadUrl}
             download="Nitish_Resume.pdf"
             className="download-button"
           >

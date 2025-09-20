@@ -11,16 +11,16 @@
 
   @media (max-width: 639px) {
     padding: 0.75rem;
-    padding-top: 5rem; // Smaller navbar space on mobile
+    padding-top: 5rem;
     align-items: flex-start;
   }
 
   @media (min-width: 768px) {
-    padding-top: 7rem; // More space on larger screens if needed
+    padding-top: 7rem;
   }
 }
 
-// Resume Content - Inner content wrapper
+// Resume Content
 .resume-content {
   display: flex;
   flex-direction: column;
@@ -28,7 +28,7 @@
   justify-content: center;
   gap: 2rem;
   width: 100%;
-  max-width: 600px;
+  max-width: 900px;
 
   @media (max-width: 639px) {
     gap: 1.5rem;
@@ -36,7 +36,7 @@
   }
 }
 
-// Resume Title
+// Title
 .resume-title {
   font-size: 1.5rem;
   color: #ffffff;
@@ -54,74 +54,32 @@
   }
 }
 
-// Flip Card Container
-.flip-card {
-  width: 280px;
-  height: 396px;
-  perspective: 1000px;
-  cursor: pointer;
-  position: relative;
-
-  @media (min-width: 640px) {
-    width: 300px;
-    height: 424px;
-  }
-
-  @media (min-width: 768px) {
-    width: 400px;
-    height: 565px;
-  }
-
-  @media (max-width: 479px) {
-    width: 260px;
-    height: 367px;
-  }
-}
-
-// Flip Card Inner Animation
-.flip-card-inner {
-  position: relative;
+// Viewer (Google Docs iframe)
+.resume-viewer {
   width: 100%;
-  height: 100%;
-  transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-  transform-style: preserve-3d;
-  border-radius: 12px;
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
-
-  &.flipped {
-    transform: rotateY(180deg);
-  }
-}
-
-// Flip Card Faces
-.flip-card-front,
-.flip-card-back {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  backface-visibility: hidden;
+  max-width: 800px;
+  height: 90vh;
+  border: 2px solid #2563eb;
   border-radius: 12px;
   overflow: hidden;
-  background: #ffffff;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+
+  @media (max-width: 768px) {
+    height: 70vh;
+  }
+
+  @media (max-width: 480px) {
+    height: 60vh;
+  }
 }
 
-.flip-card-back {
-  transform: rotateY(180deg);
-}
-
-// Card Images
-.flip-card-image {
+.resume-iframe {
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  object-position: center;
-  display: block;
+  border: none;
 }
 
-// Download Button Container
+// Download button
 .download-container {
   width: 100%;
   display: flex;
@@ -129,7 +87,6 @@
   align-items: center;
 }
 
-// Download Button
 .download-button {
   display: inline-flex;
   align-items: center;
@@ -175,17 +132,7 @@
   }
 }
 
-// Hover effects for the flip card
-.flip-card:hover .flip-card-inner {
-  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.2);
-}
-
-// Focus states for accessibility
-.flip-card:focus {
-  outline: 2px solid #2563eb;
-  outline-offset: 4px;
-}
-
+// Accessibility
 .download-button:focus {
   outline: 2px solid #ffffff;
   outline-offset: 2px;
