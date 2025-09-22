@@ -11,6 +11,7 @@ import {
 } from "./components";
 import Resume from "./components/Resume";
 import FadeIn from "./components/FadeIn";
+import Certification from "./components/Certification";
 import "./index.scss";
 
 function Home({ parentToChild }: any) {
@@ -48,6 +49,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Home parentToChild={{ mode }} />} />
             <Route path="/resume" element={<Resume />} />
+            <Route path="/certifications" element={<Certification />} />
           </Routes>
         </FadeIn>
         <Footer />
