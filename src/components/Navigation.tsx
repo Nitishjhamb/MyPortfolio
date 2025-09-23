@@ -16,6 +16,12 @@ import MenuIcon from "@mui/icons-material/Menu";
 import CloseIcon from "@mui/icons-material/Close";
 import HomeIcon from "@mui/icons-material/Home";
 
+// Define the type for parentToChild prop
+interface NavigationProps {
+  parentToChild: { mode: string };
+  modeChange: () => void;
+}
+
 const navItems = [
   { name: "Expertise", id: "expertise" },
   { name: "Education", id: "education" },
@@ -23,7 +29,7 @@ const navItems = [
   { name: "Contact", id: "contact" },
 ];
 
-function Navigation({ parentToChild, modeChange }: any) {
+function Navigation({ parentToChild, modeChange }: NavigationProps) {
   const { mode } = parentToChild;
   const navigate = useNavigate();
   const location = useLocation();
@@ -51,7 +57,6 @@ function Navigation({ parentToChild, modeChange }: any) {
     }
   };
 
-  // Navigate to home
   const goHome = () => {
     navigate("/");
     setTimeout(() => {
@@ -73,7 +78,6 @@ function Navigation({ parentToChild, modeChange }: any) {
         >
           {/* Left: Menu + Home Icons */}
           <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
-            {/* Mobile Menu Icon */}
             <IconButton
               edge="start"
               color="inherit"
@@ -83,8 +87,6 @@ function Navigation({ parentToChild, modeChange }: any) {
             >
               <MenuIcon />
             </IconButton>
-
-            {/* Home Icon */}
             <IconButton color="inherit" aria-label="home" onClick={goHome}>
               <HomeIcon />
             </IconButton>
@@ -132,20 +134,51 @@ function Navigation({ parentToChild, modeChange }: any) {
         anchorEl={anchorEl}
         open={Boolean(anchorEl)}
         onClose={handleMenuClose}
-        sx={{ display: { xs: "block", sm: "none" }, mt: 1 }}
-        PaperProps={{ style: { width: "100%", maxWidth: "200px" } }}
+        sx={{
+          display: { xs: "block", sm: "none" },
+          mt: 1,
+        }}
+        PaperProps={{
+          style: {
+            width: "100%",
+            maxWidth: "200px",
+            backdropFilter: "blur(10px)",
+            backgroundColor:
+              mode === "dark"
+                ? "rgba(26, 26, 26, 0.8)"
+                : "rgba(255, 255, 255, 0.8)",
+            color: mode === "dark" ? "#ffffff" : "#000000",
+          },
+        }}
       >
-        <MenuItem onClick={handleMenuClose} sx={{ justifyContent: "flex-end" }}>
+        <MenuItem
+          onClick={handleMenuClose}
+          sx={{ justifyContent: "flex-end", backgroundColor: "inherit" }}
+        >
           <IconButton>
-            <CloseIcon />
+            <CloseIcon
+              sx={{ color: mode === "dark" ? "#ffffff" : "#000000" }}
+            />
           </IconButton>
         </MenuItem>
 
-        {navItems.map((item) => (
+        {navItems.map((item, index) => (
           <MenuItem
             key={item.name}
             onClick={() => scrollToSection(item.id)}
-            sx={{ py: 1.5 }}
+            sx={{
+              py: 1.5,
+              backgroundColor: "inherit",
+              opacity: 0,
+              animation: "fadeIn 0.3s forwards",
+              animationDelay: `${index * 0.1}s`,
+              "&:hover": {
+                backgroundColor:
+                  mode === "dark"
+                    ? "rgba(51, 51, 51, 0.8)"
+                    : "rgba(224, 224, 224, 0.8)",
+              },
+            }}
           >
             {item.name}
           </MenuItem>
@@ -156,7 +189,19 @@ function Navigation({ parentToChild, modeChange }: any) {
             handleMenuClose();
             navigate("/resume");
           }}
-          sx={{ py: 1.5 }}
+          sx={{
+            py: 1.5,
+            backgroundColor: "inherit",
+            opacity: 0,
+            animation: "fadeIn 0.3s forwards",
+            animationDelay: `${navItems.length * 0.1}s`,
+            "&:hover": {
+              backgroundColor:
+                mode === "dark"
+                  ? "rgba(51, 51, 51, 0.8)"
+                  : "rgba(224, 224, 224, 0.8)",
+            },
+          }}
         >
           Resume
         </MenuItem>
@@ -166,11 +211,39 @@ function Navigation({ parentToChild, modeChange }: any) {
             handleMenuClose();
             navigate("/certifications");
           }}
-          sx={{ py: 1.5 }}
+          sx={{
+            py: 1.5,
+            backgroundColor: "inherit",
+            opacity: 0,
+            animation: "fadeIn 0.3s forwards",
+            animationDelay: `${(navItems.length + 1) * 0.1}s`,
+            "&:hover": {
+              backgroundColor:
+                mode === "dark"
+                  ? "rgba(51, 51, 51, 0.8)"
+                  : "rgba(224, 224, 224, 0.8)",
+            },
+          }}
         >
           Certifications
         </MenuItem>
       </Menu>
+
+      {/* Define the fadeIn animation */}
+      <style>
+        {`
+          @keyframes fadeIn {
+            from {
+              opacity: 0;
+              transform: translateY(-10px);
+            }
+            to {
+              opacity: 1;
+              transform: translateY(0);
+            }
+          }
+        `}
+      </style>
     </Box>
   );
 }

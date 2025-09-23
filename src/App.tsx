@@ -45,13 +45,15 @@ function App() {
         }`}
       >
         <Navigation parentToChild={{ mode }} modeChange={handleModeChange} />
-        <FadeIn transitionDuration={700}>
+
+        <FadeIn transitionDuration={700} className="content">
           <Routes>
             <Route path="/" element={<Home parentToChild={{ mode }} />} />
             <Route path="/resume" element={<Resume />} />
             <Route path="/certifications" element={<Certification />} />
           </Routes>
         </FadeIn>
+
         <Footer />
       </div>
     </Router>

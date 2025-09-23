@@ -1,22 +1,38 @@
-body {
+html,
+body,
+#root {
+  height: 100%;
   margin: 0;
+  padding: 0;
+}
+
+body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-size: 1.1rem !important;
+  display: flex;
+  flex-direction: column;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace !important;
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace !important;
   font-size: 1rem !important;
 }
 
+/* === Main container ensures sticky footer layout === */
 .main-container {
-  position: relative;
+  min-height: 100vh; // full height
+  display: flex;
+  flex-direction: column;
   background-color: #0d1116;
+}
 
+.content {
+  flex: 1; // pushes footer down
 }
 
 a {
@@ -25,10 +41,19 @@ a {
 
 a:hover {
   color: #5000ca !important;
-  transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
+    border-color 0.15s ease-in-out;
 }
 
-p, a, h1, h2, h3, h4, h5, label, button {
+p,
+a,
+h1,
+h2,
+h3,
+h4,
+h5,
+label,
+button {
   color: white;
   font-family: "Lato", sans-serif;
 }
@@ -50,7 +75,8 @@ p, a, h1, h2, h3, h4, h5, label, button {
 }
 
 .navigation-bar-responsive {
-  span, p {
+  span,
+  p {
     color: #0d1116;
     font-family: "Lato", sans-serif;
   }
@@ -99,13 +125,22 @@ p, a, h1, h2, h3, h4, h5, label, button {
     background-color: #f8f9fa;
   }
 
-  p, a, h1, h2, h3, h4, h5, label, button {
+  p,
+  a,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  label,
+  button {
     color: #0d1116 !important;
   }
 
   a:hover {
     color: #5000ca !important;
-    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out;
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
+      border-color 0.15s ease-in-out;
   }
 
   .navigation-bar svg {
@@ -124,7 +159,8 @@ p, a, h1, h2, h3, h4, h5, label, button {
 
   .chip {
     background-color: rgba(0, 0, 0, 0.08);
-    box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12);
+    box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2),
+      0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12);
   }
 
   .vertical-timeline::before {
@@ -132,10 +168,13 @@ p, a, h1, h2, h3, h4, h5, label, button {
   }
 
   .vertical-timeline--animate .vertical-timeline-element-content.bounce-in {
-    box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12);
+    box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2),
+      0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12);
   }
 
-  .vertical-timeline--two-columns .vertical-timeline-element-content .vertical-timeline-element-date {
+  .vertical-timeline--two-columns
+    .vertical-timeline-element-content
+    .vertical-timeline-element-date {
     color: gray;
   }
 
@@ -148,6 +187,7 @@ p, a, h1, h2, h3, h4, h5, label, button {
   }
 }
 
+/* === Responsive tweaks === */
 @media (max-width: 1024px) {
   .main-container {
     padding: 15px;
