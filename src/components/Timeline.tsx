@@ -1,88 +1,96 @@
-import React from "react";
-import "@fortawesome/free-regular-svg-icons";
+import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faGraduationCap } from "@fortawesome/free-solid-svg-icons";
 import {
-  VerticalTimeline,
-  VerticalTimelineElement,
-} from "react-vertical-timeline-component";
-import "react-vertical-timeline-component/style.min.css";
+  faUserGraduate,
+  faGraduationCap,
+  faSchool,
+  faBook,
+} from "@fortawesome/free-solid-svg-icons";
 import "../assets/styles/Timeline.scss";
 
+const educationData = [
+  {
+    id: "mca",
+    year: "2023 — 2025",
+    degree: "MCA (Cloud & DevOps)",
+    institute: "Chandigarh University",
+    summary:
+      "Advanced specialization in scalable cloud architectures and automation.",
+    color: "#6366f1",
+    icon: faUserGraduate,
+  },
+  {
+    id: "bca",
+    year: "2019 — 2022",
+    degree: "BCA",
+    institute: "Tirupati College",
+    summary:
+      "Solid foundation in software development and database management.",
+    color: "#8b5cf6",
+    icon: faGraduationCap,
+  },
+  {
+    id: "inter",
+    year: "2017 — 2019",
+    degree: "Intermediate",
+    institute: "Step by Step School",
+    summary: "Senior secondary education focused on Science and Mathematics.",
+    color: "#ec4899",
+    icon: faSchool,
+  },
+  {
+    id: "matric",
+    year: "2016 — 2017",
+    degree: "Matriculation",
+    institute: "Sanskar Valley School",
+    summary: "Foundational secondary school education.",
+    color: "#f43f5e",
+    icon: faBook,
+  },
+];
+
 function Timeline() {
+  const [activeTab, setActiveTab] = useState(educationData[0]);
+
   return (
-    <div id="education">
-      <div className="items-container">
-        <h1>Education</h1>
-
-        <VerticalTimeline>
-          {/* 2023-2025 --------------------------------------------------- */}
-          <VerticalTimelineElement
-            className="vertical-timeline-element--education"
-            contentArrowStyle={{ borderRight: "7px solid  white" }}
-            date="2023 - 2025"
-            iconStyle={{ background: "#5000ca", color: "rgb(39, 40, 34)" }}
-            icon={<FontAwesomeIcon icon={faGraduationCap} />}
-          >
-            <h3 className="vertical-timeline-element-title">
-              Master in Computer Application
-            </h3>
-            <h4 className="vertical-timeline-element-subtitle">
-              Chandigarh University
-            </h4>
-            <p>Specialization in Cloud Computing & DevOps</p>
-          </VerticalTimelineElement>
-
-          {/* 2019-2022 --------------------------------------------------- */}
-          <VerticalTimelineElement
-            className="vertical-timeline-element--education"
-            contentArrowStyle={{ borderRight: "7px solid  white" }}
-            date="2019 - 2022"
-            iconStyle={{ background: "#5000ca", color: "rgb(39, 40, 34)" }}
-            icon={<FontAwesomeIcon icon={faGraduationCap} />}
-          >
-            <h3 className="vertical-timeline-element-title">
-              Bachelors in Computer Application
-            </h3>
-            <h4 className="vertical-timeline-element-subtitle">
-              Tirupati College of Technical Education, Jaipur, Rajasthan
-            </h4>
-          </VerticalTimelineElement>
-
-          {/* 2017-2019 --------------------------------------------------- */}
-          <VerticalTimelineElement
-            className="vertical-timeline-element--education"
-            contentArrowStyle={{ borderRight: "7px solid  white" }}
-            date="2017 - 2019"
-            iconStyle={{ background: "#5000ca", color: "rgb(39, 40, 34)" }}
-            icon={<FontAwesomeIcon icon={faGraduationCap} />}
-          >
-            <h3 className="vertical-timeline-element-title">
-              Intermediate (CBSE)
-            </h3>
-            <h4 className="vertical-timeline-element-subtitle">
-              Step by Step Public School, Alwar, Rajasthan
-            </h4>
-          </VerticalTimelineElement>
-
-          {/* 2016-2017 --------------------------------------------------- */}
-          <VerticalTimelineElement
-            className="vertical-timeline-element--education"
-            contentArrowStyle={{ borderRight: "7px solid  white" }}
-            date="2016 - 2017"
-            iconStyle={{ background: "#5000ca", color: "rgb(39, 40, 34)" }}
-            icon={<FontAwesomeIcon icon={faGraduationCap} />}
-          >
-            <h3 className="vertical-timeline-element-title">
-              Matriculation (RBSE)
-            </h3>
-            <h4 className="vertical-timeline-element-subtitle">
-              Sanskar Valley Public School, Ramgarh, Alwar
-            </h4>
-          </VerticalTimelineElement>
-        </VerticalTimeline>
+    <section id="education" className="edu-minimal-section">
+      <div className="section-header">
+        <h1 className="project-title">Education</h1>
+        <div className="title-underline"></div>
       </div>
-    </div>
+
+      <div className="edu-layout">
+        {/* Navigation Sidebar */}
+        <div className="nav-sidebar">
+          {educationData.map((edu) => (
+            <div
+              key={edu.id}
+              className={`nav-item ${activeTab.id === edu.id ? "active" : ""}`}
+              onClick={() => setActiveTab(edu)}
+              style={{ "--accent": edu.color } as React.CSSProperties}
+            >
+              <FontAwesomeIcon icon={edu.icon} className="nav-icon" />
+              <div className="nav-text">
+                <span className="nav-degree">{edu.degree}</span>
+                <span className="nav-year">{edu.year.split(" — ")[1]}</span>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* Info Display */}
+        <div className="display-panel">
+          <div className="panel-inner" key={activeTab.id}>
+            <span className="accent-label" style={{ color: activeTab.color }}>
+              {activeTab.year}
+            </span>
+            <h2>{activeTab.degree}</h2>
+            <h3>{activeTab.institute}</h3>
+            <p>{activeTab.summary}</p>
+          </div>
+        </div>
+      </div>
+    </section>
   );
 }
 

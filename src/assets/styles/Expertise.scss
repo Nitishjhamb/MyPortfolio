@@ -1,69 +1,151 @@
-.skills-container {
-  padding: 5% 10%;
+/* --- 1. Global Variables (Dark Mode Default) --- */
+:root {
+  --exp-bg: #0b0f1a;
+  --exp-card-bg: #161b2a;
+  --exp-card-border: rgba(255, 255, 255, 0.05);
+  --exp-text-head: #ffffff;
+  --exp-text-body: #94a3b8;
+  --exp-icon: #6366f1;
+  --exp-hover-border: rgba(99, 102, 241, 0.4);
+}
+
+/* --- 2. Light Mode Overrides (Via Class) --- */
+.light-mode {
+  --exp-bg: #f9fafb;
+  --exp-card-bg: #ffffff;
+  --exp-card-border: rgba(0, 0, 0, 0.08);
+  --exp-text-head: #1e293b;
+  --exp-text-body: #64748b;
+  --exp-icon: #6366f1;
+}
+
+/* --- 3. Component Styles --- */
+.expertise-minimal-section {
+  width: 100%;
+  padding: 80px 10%;
+  margin: 0;
   display: flex;
   flex-direction: column;
-  width: 100%;
-  margin: 0;
 
-  svg {
-    color: white;
+  /* Auto-switches via variable */
+  background-color: var(--exp-bg);
+  color: var(--exp-text-body);
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
+
+  h1 {
+    text-align: left;
+    margin-bottom: 50px;
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: var(--exp-text-head);
+    letter-spacing: -1px;
+    transition: color 0.3s ease;
   }
 }
 
-.skills-container h1 {
-  text-align: left;
-  margin-bottom: 50px;
+.skills-container {
+  width: 100%;
+  margin: 0 auto;
 }
-
 .skills-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr); // desktop: 3 columns
-  gap: 60px;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
   width: 100%;
 }
 
 .skill {
-  text-align: justify;
-}
-
-.skill h3 {
+  background: var(--exp-card-bg);
+  border: 1px solid var(--exp-card-border);
+  border-radius: 16px;
+  padding: 30px;
   text-align: left;
-  margin: 15px 0;
+  transition: all 0.3s ease;
+
+  svg {
+    color: var(--exp-icon);
+    margin-bottom: 20px;
+    filter: drop-shadow(0 0 8px rgba(99, 102, 241, 0.3));
+    transition: transform 0.3s ease;
+  }
+
+  h3 {
+    margin: 10px 0 15px;
+    font-size: 1.3rem;
+    color: var(--exp-text-head);
+    transition: color 0.3s ease;
+  }
+
+  p {
+    line-height: 1.6;
+    color: var(--exp-text-body);
+    font-size: 0.95rem;
+    transition: color 0.3s ease;
+  }
+
+  &:hover {
+    transform: translateY(-5px);
+    border-color: var(--exp-hover-border);
+    svg {
+      transform: scale(1.1);
+    }
+  }
 }
 
-.skill p {
-  line-height: 1.6;
-  text-align: justify;
-}
-
-/* Logo Loop Styles */
+/* --- 4. LOGO LOOP FIX (NO SNAP, NO GAP) --- */
 .logo-loop-container {
   width: 100%;
   overflow: hidden;
   margin-top: 60px;
+  display: flex;
+
+  /* ⚠️ FIX 1: Start from the left. Centering causes scroll jumps. */
+  justify-content: flex-start;
+
+  /* Fade Effect on sides */
+  mask-image: linear-gradient(
+    to right,
+    transparent,
+    black 5%,
+    black 95%,
+    transparent
+  );
 }
 
 .logo-loop {
   display: flex;
-  gap: 60px;
+  align-items: center;
   width: max-content;
+  /* ⚠️ FIX 2: NO GAP. Gap messes up the 50% width calculation. */
+  gap: 0;
 }
 
 .logo-icon {
-  height: 50px;
-  width: auto;
+  height: 40px !important;
+  width: auto !important;
   object-fit: contain;
+  filter: none !important;
+  opacity: 1 !important;
+  transition: none;
+
+  /* ⚠️ FIX 3: USE MARGIN FOR SPACING */
+  /* This ensures every item (including the last one) has the exact same width footprint */
+  margin-right: 60px;
 }
 
-/* ✅ Responsive collapse */
+/* Responsive */
 @media (max-width: 992px) {
   .skills-grid {
-    grid-template-columns: repeat(2, 1fr); // tablet: 2 per row
+    grid-template-columns: repeat(2, 1fr);
   }
 }
-
 @media (max-width: 600px) {
+  .expertise-minimal-section {
+    padding: 60px 5%;
+  }
   .skills-grid {
-    grid-template-columns: 1fr; // mobile: 1 per row
+    grid-template-columns: 1fr;
   }
 }

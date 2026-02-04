@@ -1,22 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
-import {
-  AppBar,
-  Box,
-  Button,
-  CssBaseline,
-  Toolbar,
-  IconButton,
-  Menu,
-  MenuItem,
-} from "@mui/material";
 import DarkModeIcon from "@mui/icons-material/DarkMode";
 import LightModeIcon from "@mui/icons-material/LightMode";
 import MenuIcon from "@mui/icons-material/Menu";
 import CloseIcon from "@mui/icons-material/Close";
 import HomeIcon from "@mui/icons-material/Home";
+import "../assets/styles/Navigation.scss";
 
-// Define the type for parentToChild prop
 interface NavigationProps {
   parentToChild: { mode: string };
   modeChange: () => void;
@@ -33,18 +23,15 @@ function Navigation({ parentToChild, modeChange }: NavigationProps) {
   const { mode } = parentToChild;
   const navigate = useNavigate();
   const location = useLocation();
-  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
-  const handleMenuOpen = (event: React.MouseEvent<HTMLElement>) => {
-    setAnchorEl(event.currentTarget);
-  };
-
-  const handleMenuClose = () => {
-    setAnchorEl(null);
-  };
+  // Close mobile menu whenever the route changes
+  useEffect(() => {
+    setMobileMenuOpen(false);
+  }, [location]);
 
   const scrollToSection = (section: string) => {
-    handleMenuClose();
+    setMobileMenuOpen(false);
     if (location.pathname !== "/") {
       navigate("/");
       setTimeout(() => {
@@ -58,193 +45,99 @@ function Navigation({ parentToChild, modeChange }: NavigationProps) {
   };
 
   const goHome = () => {
+    setMobileMenuOpen(false);
     navigate("/");
-    setTimeout(() => {
-      window.scrollTo({ top: 0, behavior: "smooth" });
-    }, 100);
+    window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   return (
-    <Box sx={{ display: "flex" }}>
-      <CssBaseline />
-      <AppBar component="nav">
-        <Toolbar
-          className="navigation-bar"
-          sx={{
-            display: "flex",
-            justifyContent: "space-between",
-            alignItems: "center",
-          }}
-        >
-          {/* Left: Menu + Home Icons */}
-          <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
-            <IconButton
-              edge="start"
-              color="inherit"
-              aria-label="menu"
-              sx={{ display: { xs: "block", sm: "none" } }}
-              onClick={handleMenuOpen}
-            >
-              <MenuIcon />
-            </IconButton>
-            <IconButton color="inherit" aria-label="home" onClick={goHome}>
-              <HomeIcon />
-            </IconButton>
-          </Box>
+    <>
+      {/* --- CLASSIC GLASS NAVBAR --- */}
+      <nav className={`navbar ${mode === "dark" ? "dark-mode" : "light-mode"}`}>
+        <div className="navbar-container">
+          {/* 1. LINKS (Left Aligned for Classic Feel) */}
+          <div className="navbar-links">
+            {/* Home Icon */}
+            <button className="nav-link" onClick={goHome} title="Home">
+              <div style={{ display: "flex", alignItems: "center" }}>
+                <HomeIcon fontSize="small" style={{ marginRight: 5 }} />
+                Home
+              </div>
+            </button>
 
-          {/* Desktop Navigation */}
-          <Box
-            sx={{
-              display: { xs: "none", sm: "flex" },
-              alignItems: "center",
-              gap: 2,
-            }}
-          >
+            {/* Nav Items */}
             {navItems.map((item) => (
-              <Button
-                key={item.name}
+              <button
+                key={item.id}
+                className="nav-link"
                 onClick={() => scrollToSection(item.id)}
-                sx={{ color: "#fff", fontSize: { xs: "0.8rem", sm: "1rem" } }}
               >
                 {item.name}
-              </Button>
+              </button>
             ))}
-            <Button onClick={() => navigate("/resume")} sx={{ color: "#fff" }}>
+            <button className="nav-link" onClick={() => navigate("/resume")}>
               Resume
-            </Button>
-            <Button
+            </button>
+            <button
+              className="nav-link"
               onClick={() => navigate("/certifications")}
-              sx={{ color: "#fff" }}
             >
               Certifications
-            </Button>
-          </Box>
+            </button>
+          </div>
 
-          {/* Right: Theme Toggle */}
-          <Box>
-            <IconButton onClick={modeChange} sx={{ color: "inherit" }}>
+          {/* MOBILE LOGO (Visible only when desktop links are hidden) */}
+          <div className="navbar-mobile-brand" style={{ display: "none" }}>
+            {/* You can show a logo here on mobile if you want */}
+            <button className="nav-link" onClick={goHome}>
+              <HomeIcon />
+            </button>
+          </div>
+
+          {/* 2. CONTROLS (Right Aligned) */}
+          <div className="navbar-controls">
+            <div className="theme-toggle" onClick={modeChange}>
               {mode === "dark" ? <LightModeIcon /> : <DarkModeIcon />}
-            </IconButton>
-          </Box>
-        </Toolbar>
-      </AppBar>
+            </div>
 
-      {/* Mobile Dropdown Menu */}
-      <Menu
-        anchorEl={anchorEl}
-        open={Boolean(anchorEl)}
-        onClose={handleMenuClose}
-        sx={{
-          display: { xs: "block", sm: "none" },
-          mt: 1,
-        }}
-        PaperProps={{
-          style: {
-            width: "100%",
-            maxWidth: "200px",
-            backdropFilter: "blur(10px)",
-            backgroundColor:
-              mode === "dark"
-                ? "rgba(26, 26, 26, 0.8)"
-                : "rgba(255, 255, 255, 0.8)",
-            color: mode === "dark" ? "#ffffff" : "#000000",
-          },
-        }}
+            <button
+              className="mobile-menu-btn"
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              style={{ color: "inherit" }}
+            >
+              {mobileMenuOpen ? <CloseIcon /> : <MenuIcon />}
+            </button>
+          </div>
+        </div>
+      </nav>
+
+      {/* --- MOBILE FULLSCREEN MENU --- */}
+      <div
+        className={`mobile-menu ${mobileMenuOpen ? "open" : ""} ${mode === "dark" ? "dark-mode" : "light-mode"}`}
       >
-        <MenuItem
-          onClick={handleMenuClose}
-          sx={{ justifyContent: "flex-end", backgroundColor: "inherit" }}
-        >
-          <IconButton>
-            <CloseIcon
-              sx={{ color: mode === "dark" ? "#ffffff" : "#000000" }}
-            />
-          </IconButton>
-        </MenuItem>
-
-        {navItems.map((item, index) => (
-          <MenuItem
-            key={item.name}
+        <div className="mobile-link" onClick={goHome}>
+          Home
+        </div>
+        {navItems.map((item) => (
+          <div
+            key={item.id}
+            className="mobile-link"
             onClick={() => scrollToSection(item.id)}
-            sx={{
-              py: 1.5,
-              backgroundColor: "inherit",
-              opacity: 0,
-              animation: "fadeIn 0.3s forwards",
-              animationDelay: `${index * 0.1}s`,
-              "&:hover": {
-                backgroundColor:
-                  mode === "dark"
-                    ? "rgba(51, 51, 51, 0.8)"
-                    : "rgba(224, 224, 224, 0.8)",
-              },
-            }}
           >
             {item.name}
-          </MenuItem>
+          </div>
         ))}
-
-        <MenuItem
-          onClick={() => {
-            handleMenuClose();
-            navigate("/resume");
-          }}
-          sx={{
-            py: 1.5,
-            backgroundColor: "inherit",
-            opacity: 0,
-            animation: "fadeIn 0.3s forwards",
-            animationDelay: `${navItems.length * 0.1}s`,
-            "&:hover": {
-              backgroundColor:
-                mode === "dark"
-                  ? "rgba(51, 51, 51, 0.8)"
-                  : "rgba(224, 224, 224, 0.8)",
-            },
-          }}
-        >
+        <div className="mobile-link" onClick={() => navigate("/resume")}>
           Resume
-        </MenuItem>
-
-        <MenuItem
-          onClick={() => {
-            handleMenuClose();
-            navigate("/certifications");
-          }}
-          sx={{
-            py: 1.5,
-            backgroundColor: "inherit",
-            opacity: 0,
-            animation: "fadeIn 0.3s forwards",
-            animationDelay: `${(navItems.length + 1) * 0.1}s`,
-            "&:hover": {
-              backgroundColor:
-                mode === "dark"
-                  ? "rgba(51, 51, 51, 0.8)"
-                  : "rgba(224, 224, 224, 0.8)",
-            },
-          }}
+        </div>
+        <div
+          className="mobile-link"
+          onClick={() => navigate("/certifications")}
         >
           Certifications
-        </MenuItem>
-      </Menu>
-
-      {/* Define the fadeIn animation */}
-      <style>
-        {`
-          @keyframes fadeIn {
-            from {
-              opacity: 0;
-              transform: translateY(-10px);
-            }
-            to {
-              opacity: 1;
-              transform: translateY(0);
-            }
-          }
-        `}
-      </style>
-    </Box>
+        </div>
+      </div>
+    </>
   );
 }
 

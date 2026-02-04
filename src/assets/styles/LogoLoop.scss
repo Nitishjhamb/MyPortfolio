@@ -1,31 +1,58 @@
+/* 1. Container matches your TSX structure */
 .logo-loop-container {
-  overflow: hidden;
   width: 100%;
-  margin-top: 30px;
+  overflow: hidden;
+  margin-top: 60px;
   display: flex;
   justify-content: center;
+  /* Adds the fade effect */
+  mask-image: linear-gradient(
+    to right,
+    transparent,
+    black 15%,
+    black 85%,
+    transparent
+  );
 }
 
-.logo-loop-track {
+/* 2. The Track (The motion.div in your TSX) */
+.logo-loop {
   display: flex;
   align-items: center;
   width: max-content;
-  max-width: 1100px; // 👈 same as Expertise container
+  gap: 60px; /* Controls spacing between logos */
 }
 
-.logo-loop-item {
-  margin-right: 40px;
-  flex-shrink: 0;
+/* 3. The Image (Targeting 'logo-icon' directly) */
+.logo-icon {
+  height: 40px; /* ✅ FIXED: This forces the size */
+  width: auto; /* Maintains aspect ratio */
+  object-fit: contain;
+  transition:
+    transform 0.3s ease,
+    filter 0.3s ease;
 
-  img {
-    height: 40px;
-    width: auto;
-    object-fit: contain;
-    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.15));
-    transition: transform 0.3s ease;
-  }
+  /* --- DARK MODE (Default) --- */
+  /* Turns black logos White so they are visible */
+  filter: grayscale(1) brightness(100) contrast(0);
+  opacity: 0.7;
 
-  img:hover {
+  &:hover {
     transform: scale(1.15);
+    opacity: 1;
+    filter: none; /* Shows original color on hover */
+  }
+}
+
+/* --- 4. LIGHT MODE OVERRIDE --- */
+/* Forces original colors when body has 'light-mode' */
+:global(body.light),
+:global(body.light-mode),
+:global(.light-mode) .logo-icon {
+  filter: none; /* Original colors */
+  opacity: 0.9;
+
+  &:hover {
+    opacity: 1;
   }
 }

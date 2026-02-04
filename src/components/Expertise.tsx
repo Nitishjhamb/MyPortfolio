@@ -4,9 +4,8 @@ import { faCode, faCloud, faTerminal } from "@fortawesome/free-solid-svg-icons";
 import { motion } from "framer-motion";
 import "../assets/styles/Expertise.scss";
 
-// ✅ All logos (mostly SVG, clean & official)
+// ✅ Original Logos
 const allLogos = [
-  // Web
   {
     src: "https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg",
     alt: "React",
@@ -35,8 +34,6 @@ const allLogos = [
     src: "https://www.netlify.com/v3/img/components/logomark.svg",
     alt: "Netlify",
   },
-
-  // Cloud & DevOps
   {
     src: "https://img.icons8.com/?size=100&id=VLKafOkk3sBX&format=png&color=000000",
     alt: "Microsoft Azure",
@@ -61,8 +58,6 @@ const allLogos = [
     src: "https://upload.wikimedia.org/wikipedia/commons/e/e9/Jenkins_logo.svg",
     alt: "Jenkins",
   },
-
-  // Linux
   {
     src: "https://img.icons8.com/?size=100&id=63208&format=png&color=000000",
     alt: "Ubuntu",
@@ -85,19 +80,21 @@ const allLogos = [
   },
 ];
 
-// ✅ Looping logos animation
 const LogoLoop = () => {
-  const logos = [...allLogos, ...allLogos]; // duplicate for seamless loop
+  // ✅ Duplicated list: [Set A] + [Set A]
+  // This allows us to scroll 50% (exactly one set) and snap back instantly.
+  const logos = [...allLogos, ...allLogos];
 
   return (
     <div className="logo-loop-container">
       <motion.div
         className="logo-loop"
-        animate={{ x: ["0%", "-50%"] }}
+        initial={{ x: 0 }}
+        animate={{ x: "-50%" }} // Moves exactly half the total width
         transition={{
           repeat: Infinity,
           ease: "linear",
-          duration: 40,
+          duration: 30, // Adjust speed here
         }}
       >
         {logos.map((logo, index) => (
@@ -115,12 +112,13 @@ const LogoLoop = () => {
 
 function Expertise() {
   return (
-    <div className="container" id="expertise">
+    <div className="expertise-minimal-section" id="expertise">
       <div className="skills-container">
-        <h1>Expertise</h1>
-
+        <div className="section-header">
+          <h1 className="project-title">Experties</h1>
+          <div className="title-underline"></div>
+        </div>
         <div className="skills-grid">
-          {/* Web Development */}
           <div className="skill">
             <FontAwesomeIcon icon={faCode} size="3x" />
             <h3>Web Development & Security</h3>
@@ -129,8 +127,6 @@ function Expertise() {
               technologies, ensuring performance and data protection.
             </p>
           </div>
-
-          {/* Cloud */}
           <div className="skill">
             <FontAwesomeIcon icon={faCloud} size="3x" />
             <h3>Cloud Computing & DevOps</h3>
@@ -139,8 +135,6 @@ function Expertise() {
               pipelines for automated deployments.
             </p>
           </div>
-
-          {/* Linux */}
           <div className="skill">
             <FontAwesomeIcon icon={faTerminal} size="3x" />
             <h3>Linux System Administration</h3>
@@ -150,8 +144,6 @@ function Expertise() {
             </p>
           </div>
         </div>
-
-        {/* ✅ Animated logos row */}
         <LogoLoop />
       </div>
     </div>

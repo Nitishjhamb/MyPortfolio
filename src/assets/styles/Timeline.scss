@@ -1,228 +1,167 @@
-/* ---------- BASE STYLES ---------- */
-.vertical-timeline-element-content {
-  border-radius: 20px;
-  backdrop-filter: blur(22px);
-  -webkit-backdrop-filter: blur(22px);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  padding: 24px 32px;
-  margin-left: 0;
-  margin-right: 0;
+// Variables synced with your project section
+:root {
+  --edu-bg: #0b0f1a; // Match your background
+  --edu-panel: #161b2a;
+  --edu-text: #ffffff;
+  --edu-muted: #94a3b8;
+  --edu-border: rgba(255, 255, 255, 0.05);
 }
 
-.vertical-timeline-element-content:hover {
-  transform: scale(1.04);
-  box-shadow: 0 18px 55px rgba(0, 0, 0, 0.45);
-}
-
-/* ---------- TIMELINE ICON STYLES ---------- */
-.vertical-timeline-element-icon {
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  width: 40px !important;
-  height: 40px !important;
-  border-radius: 50% !important;
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border: 2px solid rgba(255, 255, 255, 0.2);
-  transition: all 0.3s ease;
-  position: absolute !important;
-  left: 50% !important;
-  transform: translateX(-50%) !important;
-  overflow: hidden !important;
-  margin-left: 0 !important;
-  margin-right: 0 !important;
-}
-
-.vertical-timeline-element-icon:hover {
-  transform: translateX(-50%) scale(1.1) !important;
-}
-
-.vertical-timeline-element-icon .svg-inline--fa,
-.vertical-timeline-element-icon svg,
-.vertical-timeline-element-icon i {
-  font-size: 16px !important;
-  width: 16px !important;
-  height: 16px !important;
-  position: absolute !important;
-  top: 50% !important;
-  left: 50% !important;
-  transform: translate(-50%, -50%) !important;
-  transition: color 0.3s ease;
-  margin: 0 !important;
-  padding: 0 !important;
-}
-
-/* Fix for react-vertical-timeline-component specific alignment */
-.vertical-timeline::before {
-  left: 50% !important;
-  transform: translateX(-50%) !important;
-}
-
-.vertical-timeline-element:nth-child(odd) .vertical-timeline-element-icon,
-.vertical-timeline-element:nth-child(even) .vertical-timeline-element-icon {
-  //left: 50% !important;
-  transform: translateX(-50%) !important;
-  margin-left: 0 !important;
-}
-
-.vertical-timeline-element:nth-child(odd) .vertical-timeline-element-icon:hover,
-.vertical-timeline-element:nth-child(even)
-  .vertical-timeline-element-icon:hover {
-  transform: translateX(-50%) scale(1.1) !important;
-}
-
-/* Alternative sizing for larger icons if needed */
-.vertical-timeline-element-icon.large {
-  width: 50px !important;
-  height: 50px !important;
-}
-
-.vertical-timeline-element-icon.large .svg-inline--fa,
-.vertical-timeline-element-icon.large svg,
-.vertical-timeline-element-icon.large i {
-  font-size: 20px !important;
-  width: 20px !important;
-  height: 20px !important;
-}
-
-/* ---------- DARK MODE STYLES ---------- */
-/* When main container has dark-mode class */
-.dark-mode {
-  .vertical-timeline-element-content {
-    background: linear-gradient(
-      135deg,
-      rgba(71, 110, 237, 0.793),
-      /* deep purple */ rgba(199, 46, 143, 0.753) /* magenta */
-    );
-    border: 1px solid rgba(255, 255, 255, 0.12);
-    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.35);
-  }
-
-  .vertical-timeline-element-title,
-  .vertical-timeline-element-subtitle,
-  .vertical-timeline-element p,
-  .vertical-timeline-element span,
-  .vertical-timeline-element-date {
-    color: #f1f1f1;
-  }
-
-  .vertical-timeline-element-icon {
-    background: linear-gradient(
-      135deg,
-      rgba(71, 110, 237, 0.9),
-      rgba(199, 46, 143, 0.8)
-    );
-    border: 2px solid rgba(255, 255, 255, 0.3);
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
-  }
-
-  .svg-inline--fa,
-  .vertical-timeline-element-icon .svg-inline--fa,
-  .vertical-timeline-element-icon svg,
-  .vertical-timeline-element-icon i {
-    color: #fff;
-  }
-}
-
-/* ---------- LIGHT MODE STYLES (EXPLICIT) ---------- */
-/* When main container has light-mode class */
 .light-mode {
-  .vertical-timeline-element-content {
-    background: linear-gradient(
-      135deg,
-      rgba(255, 255, 255, 0.97),
-      /* white */ rgba(230, 230, 250, 0.8) /* lavender */
-    );
-    border: 1px solid rgba(0, 0, 0, 0.08);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-  }
+  --edu-bg: #f8fafc;
+  --edu-panel: #ffffff;
+  --edu-text: #1e293b;
+  --edu-muted: #64748b;
+  --edu-border: rgba(0, 0, 0, 0.1);
+}
 
-  .vertical-timeline-element-title,
-  .vertical-timeline-element-subtitle,
-  .vertical-timeline-element p,
-  .vertical-timeline-element span,
-  .vertical-timeline-element-date {
-    color: #222;
-  }
+.edu-minimal-section {
+  padding: 80px 10%;
+  background: var(--edu-bg);
+  color: var(--edu-text);
 
-  .vertical-timeline-element-icon {
-    background: linear-gradient(
-      135deg,
-      rgba(255, 255, 255, 0.95),
-      rgba(230, 230, 250, 0.9)
-    );
-    border: 2px solid rgba(80, 0, 202, 0.2);
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
-  }
+  .section-header {
+    position: relative;
+    z-index: 2;
+    margin-bottom: 60px;
+    text-align: left;
 
-  .svg-inline--fa,
-  .vertical-timeline-element-icon .svg-inline--fa,
-  .vertical-timeline-element-icon svg,
-  .vertical-timeline-element-icon i {
-    color: #0d1116;
+    .project-title {
+      font-size: 2.5rem;
+      font-weight: 800;
+      color: var(--proj-title); /* Auto-switches */
+      margin-bottom: 10px;
+      letter-spacing: -1px;
+      transition: color 0.3s ease;
+    }
+
+    .title-underline {
+      width: 60px;
+      height: 4px;
+      background: #6366f1;
+      border-radius: 2px;
+    }
   }
 }
 
-//* ---------- RESPONSIVENESS FIXES ---------- */
+.edu-layout {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 30px;
+}
+
+.nav-sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  .nav-item {
+    padding: 16px 20px;
+    border-radius: 12px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    transition: all 0.2s ease;
+    border: 1px solid transparent;
+
+    .nav-icon {
+      color: var(--edu-muted);
+      font-size: 1rem;
+    }
+    .nav-text {
+      display: flex;
+      flex-direction: column;
+      .nav-degree {
+        font-weight: 600;
+        font-size: 0.9rem;
+      }
+      .nav-year {
+        font-size: 0.75rem;
+        color: var(--edu-muted);
+      }
+    }
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.03);
+    }
+
+    &.active {
+      background: var(--edu-panel);
+      border-color: var(--accent);
+      .nav-icon {
+        color: var(--accent);
+      }
+      .nav-degree {
+        color: var(--edu-text);
+      }
+    }
+  }
+}
+
+.display-panel {
+  background: var(--edu-panel);
+  border-radius: 16px;
+  border: 1px solid var(--edu-border);
+  display: flex;
+  align-items: center;
+  padding: 50px;
+
+  .panel-inner {
+    animation: slideIn 0.3s ease-out;
+    .accent-label {
+      font-size: 0.75rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+    h2 {
+      font-size: 2rem;
+      margin: 10px 0;
+    }
+    h3 {
+      font-size: 1.1rem;
+      color: var(--edu-muted);
+      font-weight: 400;
+      margin-bottom: 15px;
+    }
+    p {
+      color: var(--edu-muted);
+      font-size: 1rem;
+      max-width: 500px;
+      line-height: 1.6;
+    }
+  }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
 @media (max-width: 768px) {
-  /* Timeline line adjustment */
-  .vertical-timeline::before {
-    left: 28px !important;
+  .edu-layout {
+    grid-template-columns: 1fr;
   }
-
-  /* Icon container adjustments - ensure visibility */
-  .vertical-timeline-element-icon {
-    left: 28px !important;
-    transform: none !important;
-    width: 36px !important;
-    height: 36px !important;
-    /* Add these to ensure visibility */
-    z-index: 1 !important;
-    opacity: 1 !important;
-    visibility: visible !important;
+  .nav-sidebar {
+    flex-direction: row;
+    overflow-x: auto;
+    padding-bottom: 10px;
+    .nav-item {
+      flex: 0 0 auto;
+      .nav-year {
+        display: none;
+      }
+    }
   }
-
-  /* Icon content adjustments */
-  .vertical-timeline-element-icon .svg-inline--fa,
-  .vertical-timeline-element-icon svg,
-  .vertical-timeline-element-icon i {
-    font-size: 16px !important;
-    width: 16px !important;
-    height: 16px !important;
-    /* Ensure icon is visible */
-    display: block !important;
-  }
-
-  /* Content positioning */
-  .vertical-timeline-element-content {
-    margin-left: 70px !important;
-    padding: 20px !important;
-  }
-
-  /* Ensure all elements follow the same pattern */
-  .vertical-timeline-element:nth-child(odd) .vertical-timeline-element-content,
-  .vertical-timeline-element:nth-child(even)
-    .vertical-timeline-element-content {
-    margin-left: 70px !important;
-    margin-right: 0 !important;
-  }
-}
-
-/* Additional small screen adjustments */
-@media (max-width: 480px) {
-  .vertical-timeline-element-icon {
-    width: 32px !important;
-    height: 32px !important;
-    left: 24px !important;
-  }
-
-  .vertical-timeline-element-content {
-    margin-left: 60px !important;
-    padding: 16px 12px !important;
-  }
-
-  .vertical-timeline::before {
-    left: 24px !important;
+  .display-panel {
+    padding: 30px;
+    min-height: 250px;
   }
 }

@@ -1,139 +1,231 @@
-// Resume Container - Main wrapper
-.resume-container {
+/* =========================================
+   RESUME PAGE (Matched to Site Theme)
+   ========================================= */
+
+// 1. MAIN PAGE WRAPPER
+.resume-page {
   min-height: 100vh;
   width: 100%;
+  padding-top: 100px;
+  padding-bottom: 50px;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 1rem;
-  padding-top: 6rem; // Space for fixed navbar
-  box-sizing: border-box;
+  position: relative;
+  z-index: 10;
 
-  @media (max-width: 639px) {
-    padding: 0.75rem;
-    padding-top: 5rem;
-    align-items: flex-start;
-  }
-
-  @media (min-width: 768px) {
-    padding-top: 7rem;
-  }
+  /* ✅ FIX: Match Main BG Color */
+  background-color: #0b0f1a;
+  transition: background-color 0.5s ease;
 }
 
-// Resume Content
-.resume-content {
+// 2. THE GLASS CARD
+.resume-glass-card {
+  width: 90%;
+  max-width: 900px;
+
+  /* Glass Effect */
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2);
+
+  border-radius: 24px;
+  padding: 40px;
+
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  gap: 2rem;
-  width: 100%;
-  max-width: 900px;
-
-  @media (max-width: 639px) {
-    gap: 1.5rem;
-    max-width: 100%;
-  }
+  gap: 30px;
+  transition: all 0.3s ease;
 }
 
-// Title
-.resume-title {
-  font-size: 1.5rem;
-  color: #ffffff;
-  font-weight: 600;
+// 3. HEADER TEXT
+.resume-header {
   text-align: center;
-  margin: 0;
-  line-height: 1.2;
-
-  @media (min-width: 640px) {
-    font-size: 2rem;
-  }
-
-  @media (max-width: 639px) {
-    font-size: 1.25rem;
-  }
 }
 
-// Viewer (Google Docs iframe)
-.resume-viewer {
+.resume-title {
+  font-size: 2.5rem;
+  font-weight: 800;
+  margin: 0 0 10px 0;
+  letter-spacing: -0.5px;
+
+  /* Gradient Text */
+  background: linear-gradient(120deg, #ffffff, #888888);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.resume-subtitle {
+  font-size: 1.1rem;
+  opacity: 0.7;
+  margin: 0;
+  font-weight: 400;
+}
+
+// 4. IFRAME CONTAINER
+.resume-frame-container {
   width: 100%;
-  max-width: 800px;
-  height: 90vh;
-  border: 2px solid #2563eb;
+  height: 75vh;
+  max-height: 800px;
+  position: relative;
   border-radius: 12px;
   overflow: hidden;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
-
-  @media (max-width: 768px) {
-    height: 70vh;
-  }
-
-  @media (max-width: 480px) {
-    height: 60vh;
-  }
+  background: rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .resume-iframe {
   width: 100%;
   height: 100%;
   border: none;
+  display: block;
 }
 
-// Download button
-.download-container {
+// Loading Spinner Overlay
+.loading-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(20, 20, 20, 0.8);
+  z-index: 2;
+  color: #fff;
+}
+
+// 5. BUTTON STYLES
+.resume-actions {
   display: flex;
   justify-content: center;
-  align-items: center;
+  width: 100%;
 }
 
-.download-button {
-  display: inline-flex;
+.download-btn {
+  display: flex;
   align-items: center;
-  justify-content: center;
-  background-color: #2563eb;
-  color: #ffffff;
-  font-weight: 500;
-  padding: 0.875rem 2rem;
+  gap: 10px;
+  padding: 14px 30px;
+
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 50px;
-  box-shadow: 0 4px 14px rgba(37, 99, 235, 0.3);
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+  color: inherit;
+  font-weight: 600;
   font-size: 1rem;
-  line-height: 1.5;
-  text-align: center;
   text-decoration: none;
-  min-width: 180px;
-  border: 2px solid transparent;
-  white-space: nowrap;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 
   &:hover {
-    background-color: #ffffff;
-    color: #2563eb;
-    border-color: #2563eb;
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(37, 99, 235, 0.4);
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    border-color: rgba(255, 255, 255, 0.4);
   }
 
   &:active {
     transform: translateY(0);
-    transition-duration: 0.1s;
-  }
-
-  @media (max-width: 639px) {
-    padding: 0.75rem 1.5rem;
-    font-size: 0.9rem;
-    min-width: 160px;
-  }
-
-  @media (max-width: 479px) {
-    padding: 0.75rem 1.25rem;
-    font-size: 0.875rem;
-    min-width: 140px;
   }
 }
 
-// Accessibility
-.download-button:focus {
-  outline: 2px solid #ffffff;
-  outline-offset: 2px;
+/* =========================================
+   THEMES (Matching Main Site Colors)
+   ========================================= */
+
+/* Dark Mode (Default) */
+.dark-mode .resume-page {
+  background-color: #0b0f1a; /* ✅ Match Main Dark */
+}
+.dark-mode .resume-glass-card {
+  background: rgba(20, 20, 30, 0.6);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+.dark-mode .resume-title {
+  background: linear-gradient(120deg, #ffffff, #aaaaaa);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.dark-mode .resume-subtitle {
+  color: #cccccc;
+}
+.dark-mode .download-btn {
+  color: #ffffff;
+}
+
+/* Light Mode */
+.light-mode .resume-page {
+  background-color: #ffffff; /* ✅ Match Main Light */
+}
+.light-mode .resume-glass-card {
+  background: rgba(255, 255, 255, 0.6);
+  border-color: rgba(0, 0, 0, 0.08);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.05);
+}
+.light-mode .resume-title {
+  background: linear-gradient(120deg, #000000, #444444);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.light-mode .resume-subtitle {
+  color: #555555;
+}
+.light-mode .resume-frame-container {
+  background: #f0f0f0;
+  border-color: rgba(0, 0, 0, 0.1);
+}
+.light-mode .loading-overlay {
+  background: rgba(255, 255, 255, 0.8);
+  color: #000;
+}
+
+.light-mode .download-btn {
+  background: rgba(0, 0, 0, 0.05);
+  border-color: rgba(0, 0, 0, 0.1);
+  color: #000000;
+
+  &:hover {
+    background: rgba(0, 0, 0, 0.1);
+    border-color: rgba(0, 0, 0, 0.2);
+  }
+}
+
+/* =========================================
+   RESPONSIVE (Mobile Fixes)
+   ========================================= */
+@media (max-width: 768px) {
+  .resume-page {
+    padding-top: 80px;
+    /* Less padding on sides for mobile to maximize width */
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  .resume-glass-card {
+    padding: 20px;
+    width: 100%; /* Use full available width */
+  }
+
+  .resume-title {
+    font-size: 2rem;
+  }
+
+  /* ✅ FIX: INCREASED MOBILE HEIGHT */
+  .resume-frame-container {
+    height: 45vh;
+  }
+
+  .download-btn {
+    width: 100%;
+    justify-content: center;
+  }
 }

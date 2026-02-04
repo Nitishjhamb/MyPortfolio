@@ -1,146 +1,78 @@
-import mockup1 from "../assets/images/mockup1.png";
-import mockup2 from "../assets/images/mockup2.png";
-import mockup3 from "../assets/images/mockup3.png";
-import mockup4 from "../assets/images/mockup4.png";
-import mockup5 from "../assets/images/mockup5.png"; // Add new image for Azure Translator
+import React from "react";
 import "../assets/styles/Project.scss";
 
+const projectData = [
+  {
+    title: "Inkscribe",
+    desc: "AI OCR platform for handwriting using Azure and Gemini AI.",
+    tech: ["Azure", "Gemini", "Flask"],
+    link: "https://inkscribe.vercel.app/",
+  },
+  {
+    title: "ChatVaani AI",
+    desc: "Conversational assistant for task automation and interaction.",
+    tech: ["React", "Node.js", "AI"],
+    link: "https://chatvaani.netlify.app/",
+  },
+  {
+    title: "Azure Translator",
+    desc: "Translation tool leveraging Azure Cognitive Services.",
+    tech: ["Azure API", "React"],
+    link: "https://azure-translator-eight.vercel.app/",
+  },
+];
+
 function Project() {
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    const cards = document.getElementsByClassName("project-card");
+    for (const card of cards as any) {
+      const rect = card.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      card.style.setProperty("--mouse-x", `${x}px`);
+      card.style.setProperty("--mouse-y", `${y}px`);
+    }
+  };
+
   return (
-    <div className="projects-container" id="projects">
-      <h1>Personal Projects</h1>
-      <div className="projects-grid">
-        <div className="project">
-          <div className="image-container">
-            <a
-              href="https://github.com/Nitishjhamb/automation-react-project.git"
-              target="_blank"
-              rel="noreferrer"
-            >
-              <img src={mockup4} className="zoom" alt="thumbnail" />
-            </a>
-          </div>
-          <a
-            href="https://github.com/Nitishjhamb/automation-react-project.git"
-            target="_blank"
-            rel="noreferrer"
-          >
-            <h2>
-              Automated Vulnerability Management and Visualization Platform
-            </h2>
-          </a>
-          <p>
-            Automated Vulnerability Management and Visualization Platform" is a
-            comprehensive solution designed to enhance software security by
-            automating the detection, analysis, and remediation of
-            vulnerabilities across the development lifecycle.
-          </p>
-        </div>
+    <section
+      className="projects-minimal-section"
+      id="projects"
+      onMouseMove={handleMouseMove}
+    >
+      <div className="dot-grid-bg"></div>
 
-        <div className="project">
-          <div className="image-container">
-            <a
-              href="https://www.aquila-cms.com/demo#"
-              target="_blank"
-              rel="noreferrer"
-            >
-              <img src={mockup3} className="zoom" alt="thumbnail" />
-            </a>
-          </div>
-          <a
-            href="https://www.aquila-cms.com/demo#"
-            target="_blank"
-            rel="noreferrer"
-          >
-            <h2>Aquila Cloud Shield Application</h2>
-          </a>
-          <p>
-            The Aquila Cloud Shield Application project focuses on deploying a
-            robust and secure web application using the MERN (MongoDB,
-            Express.js, React, Node.js) stack within a three-tier architecture
-            on a cloud platform such as AWS or Azure.
-          </p>
-        </div>
-
-        <div className="project">
-          <div className="image-container">
-            <a
-              href="https://chatvaani.netlify.app/"
-              target="_blank"
-              rel="noreferrer"
-            >
-              <img src={mockup2} className="zoom" alt="thumbnail" />
-            </a>
-          </div>
-          <a
-            href="https://chatvaani.netlify.app/"
-            target="_blank"
-            rel="noreferrer"
-          >
-            <h2>ChatVaani</h2>
-          </a>
-          <p>
-            ChatVaani AI Bot is an intelligent, real-time conversational
-            assistant designed to enhance user interaction and automate tasks
-            seamlessly. Built with advanced AI capabilities, it can answer
-            queries, provide personalized recommendations, and assist with daily
-            activities. Whether it's fetching information, helping with
-            reminders, or engaging in meaningful conversations, ChatVaani AI Bot
-            ensures an intuitive, responsive, and human-like experience.
-          </p>
-        </div>
-        <div className="project">
-          <div className="image-container">
-            <a
-              href="https://azure-translator-eight.vercel.app/"
-              target="_blank"
-              rel="noreferrer"
-            >
-              <img src={mockup5} className="zoom" alt="Azure Translator" />
-            </a>
-          </div>
-          <a
-            href="https://azure-translator-eight.vercel.app/"
-            target="_blank"
-            rel="noreferrer"
-          >
-            <h2>Azure Translator</h2>
-          </a>
-          <p>
-            Azure Translator is a web-based translation application built using
-            Azure Cognitive Services. It enables users to translate text between
-            more than 100 languages in real-time. The project demonstrates the
-            integration of Azure Translator REST API with a user-friendly front
-            end.
-          </p>
-        </div>
-        <div className="project">
-          <div className="image-container">
-            <a
-              href="https://github.com/Nitishjhamb"
-              target="_blank"
-              rel="noreferrer"
-            >
-              <img src={mockup1} className="zoom" alt="thumbnail" />
-            </a>
-          </div>
-          <a
-            href="https://github.com/Nitishjhamb"
-            target="_blank"
-            rel="noreferrer"
-          >
-            <h2>Integration EduTech</h2>
-          </a>
-          <p>
-            Developed a comprehensive web-based solution for Integration EduTech
-            to efficiently manage employees, clients, and organizational
-            workflows. This platform streamlines core operations by providing
-            features like employee records management, client tracking, task
-            assignments, and performance monitoring.
-          </p>
-        </div>
+      <div className="section-header">
+        <h1 className="project-title">Projects</h1>
+        <div className="title-underline"></div>
       </div>
-    </div>
+
+      <div className="projects-grid">
+        {projectData.map((proj, index) => (
+          <div className="project-card" key={index}>
+            <div className="card-inner">
+              <div className="tech-row">
+                {proj.tech.map((t) => (
+                  <span key={t} className="tech-pill">
+                    {t}
+                  </span>
+                ))}
+              </div>
+              <h2>{proj.title}</h2>
+              <p>{proj.desc}</p>
+              <a
+                href={proj.link}
+                target="_blank"
+                rel="noreferrer"
+                className="source-link"
+              >
+                View Source →
+              </a>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
   );
 }
 

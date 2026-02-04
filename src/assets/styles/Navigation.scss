@@ -1,0 +1,210 @@
+/* =========================================
+   SEAMLESS GLASS NAV (No Borders/Shadows)
+   ========================================= */
+
+* {
+  box-sizing: border-box;
+}
+
+/* 1. MAIN BAR */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 70px;
+  z-index: 1000;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  /* ✅ PURE GLASS SETTINGS */
+  background: transparent;
+  backdrop-filter: blur(15px); /* Smooth blur */
+  -webkit-backdrop-filter: blur(15px);
+
+  /* ✅ CRITICAL FIX: Remove all borders and shadows */
+  border: none !important;
+  box-shadow: none !important;
+  outline: none !important;
+
+  transition: background 0.3s ease;
+}
+
+/* 2. CONTAINER */
+.navbar-container {
+  width: 100%;
+  max-width: 1200px;
+  height: 100%;
+  padding: 0 40px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* 3. LINKS (Desktop) */
+.navbar-links {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.nav-link {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+
+  font-size: 1rem;
+  font-weight: 600;
+  padding: 8px 12px;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+  position: relative;
+  font-family: inherit;
+
+  /* Text Shadow makes text pop without needing a bg color */
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+  &:hover {
+    background-color: rgba(128, 128, 128, 0.1);
+  }
+}
+
+/* 4. CONTROLS */
+.navbar-controls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.theme-toggle {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  transition: background 0.2s ease;
+
+  &:hover {
+    background-color: rgba(128, 128, 128, 0.1);
+  }
+}
+
+.mobile-menu-btn {
+  display: none;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 5px;
+  align-items: center;
+  justify-content: center;
+}
+
+/* 5. MOBILE MENU */
+.mobile-menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 0;
+  overflow: hidden;
+
+  /* Menu needs to be readable, so we keep blur and some tint here */
+  backdrop-filter: blur(30px);
+  -webkit-backdrop-filter: blur(30px);
+  transition: height 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: 999;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-top: 0;
+}
+
+.mobile-menu.open {
+  height: 100vh;
+}
+
+.mobile-link {
+  width: 100%;
+  text-align: center;
+  padding: 20px;
+  font-size: 1.5rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s;
+
+  &:hover {
+    background-color: rgba(128, 128, 128, 0.1);
+  }
+}
+
+/* =========================================
+   THEMES (Adjusting Tints)
+   ========================================= */
+
+/* Dark Mode */
+.dark-mode.navbar {
+  /* Almost transparent, just a hint of dark to help text read */
+  background: rgba(0, 0, 0, 0.05);
+  color: #ffffff;
+}
+.dark-mode .nav-link {
+  color: #e0e0e0;
+}
+.dark-mode .nav-link:hover {
+  color: #ffffff;
+}
+
+.dark-mode .mobile-menu {
+  background: rgba(5, 5, 10, 0.85);
+  color: white;
+}
+.dark-mode .mobile-menu-btn {
+  color: white;
+}
+
+/* Light Mode */
+.light-mode.navbar {
+  /* Almost transparent white */
+  background: rgba(255, 255, 255, 0.05);
+  color: #1a1a1a;
+}
+.light-mode .nav-link {
+  color: #333333;
+}
+.light-mode .nav-link:hover {
+  color: #000000;
+}
+
+.light-mode .mobile-menu {
+  background: rgba(255, 255, 255, 0.9);
+  color: black;
+}
+.light-mode .mobile-menu-btn {
+  color: black;
+}
+
+/* =========================================
+   RESPONSIVENESS
+   ========================================= */
+@media (max-width: 900px) {
+  .navbar-container {
+    padding: 0 20px;
+    justify-content: space-between;
+  }
+
+  .navbar-links {
+    display: none;
+  }
+
+  .mobile-menu-btn {
+    display: flex;
+    z-index: 1001;
+  }
+}

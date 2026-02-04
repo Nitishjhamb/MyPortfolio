@@ -8,7 +8,7 @@ import "../assets/styles/Footer.scss";
 function Footer() {
   return (
     <footer>
-      <div>
+      <div className="social-links">
         <a
           href="https://github.com/Nitishjhamb"
           target="_blank"
@@ -24,7 +24,7 @@ function Footer() {
           <LinkedInIcon />
         </a>
         <a
-          href="https://mail.google.com/mail/u/0/#inbox?compose=jrjtWvMnFtTXdKKZQBdTFZZCpFxSJzsLvdpsBnQwQwmhWjqWfjxghwJbkcLcLCsJdSqrrwJB"
+          href="https://mail.google.com/mail/u/0/#inbox"
           target="_blank"
           rel="noreferrer"
         >
@@ -38,7 +38,7 @@ function Footer() {
           <Instagram />
         </a>
       </div>
-      <p> © 2025 Nitish Jhamb</p>
+      <p>© 2026 Nitish Jhamb. All rights reserved.</p>
     </footer>
   );
 }

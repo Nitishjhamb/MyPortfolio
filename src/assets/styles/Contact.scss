@@ -1,163 +1,179 @@
-/* Dark Mode (Default) */
-.contact_wrapper svg {
-  font-size: 1em;
-  vertical-align: middle;
-  margin-right: 5px;
-}
+/* =========================================================
+   1. DARK MODE (DEFAULT)
+   ========================================================= */
+#contact {
+  width: 100%;
+  padding: 80px 10%;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  background-color: #0b0f1a; /* Dark Background */
+  color: #94a3b8;
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
 
-.contact-form {
-  padding-top: 20px;
-  color: white;
+  .contact-container {
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+  }
 
-  button {
-    float: right;
-    background-color: white;
-    color: #050f0b;
-    border: 1px solid transparent;
+  .section-header {
+    text-align: center;
+    margin-bottom: 50px;
+
+    h1 {
+      font-size: 2.5rem;
+      font-weight: 800;
+      color: #ffffff;
+      margin-bottom: 10px;
+      transition: color 0.3s ease;
+    }
+
+    p {
+      font-size: 1.1rem;
+      color: #94a3b8;
+    }
+  }
+
+  /* Dark Card */
+  .contact-card-wrapper {
+    background: #161b2a;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 16px;
+    padding: 40px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
 
     &:hover {
-      background-color: #5000ca;
-      color: white;
-      border-color: #5000ca;
+      border-color: rgba(99, 102, 241, 0.4);
     }
   }
 
-  fieldset {
-    background-color: transparent;
-    border: 1px solid #bdbdbd;
-    border-radius: 4px;
-  }
-
-  input,
-  textarea {
-    background-color: #1a2027;
-    color: white;
-    font-weight: 400;
-    font-family: 'Lato', sans-serif;
-    border: 1px solid #bdbdbd;
-    border-radius: 4px;
-    padding: 8px 12px;
-    &:focus{
-        outline: none;
-        border-color: #5000ca;
-    }
-  }
-
-  textarea {
-    padding: 12px;
-    resize: vertical;
-  }
-
-  .MuiTextField-root {
-      width: 100%;
-      margin-bottom: 15px;
-  }
-
-  .MuiInputLabel-root {
-      color: #bdbdbd;
-      &.Mui-focused {
-          color: #5000ca;
-      }
-  }
-
-  .MuiOutlinedInput-root {
-      & fieldset {
-          border-color: #bdbdbd;
-      }
-      &:hover fieldset {
-          border-color: white;
-      }
-      &.Mui-focused fieldset {
-          border-color: #5000ca;
-      }
-  }
-
-  .MuiFormHelperText-root {
-      color: #f44336;
-  }
-}
-
-label {
-  font-size: 1.2rem;
-  font-family: 'DomaineDispNar-Medium', sans-serif;
-  color: #bdbdbd;
-}
-
-.form-flex {
-  display: flex;
-  gap: 15px;
-  padding-bottom: 15px;
-
-  .MuiTextField-root {
-      width: 100%;
-  }
-}
-
-.MuiInputBase-root {
-  padding: 0 !important;
-}
-
-form {
-  width: 100% !important;
-}
-
-.body-form {
-  width: 100% !important;
-  margin-bottom: 15px !important;
-}
-
-/* Light Mode */
-.light-mode {
+  /* Material UI Overrides (Dark) */
   .contact-form {
-    color: #050f0b; // Dark text
+    .form-flex {
+      display: flex;
+      gap: 20px;
+      margin-bottom: 20px;
+    }
 
-    button {
-      background-color: #ffffff; // Dark button background
-      color: white; // Light button text
-      border-color: #ffffff; // Dark border
-      &:hover{
-        background-color: #5000ca;
-        border-color: #5000ca;
-        color: white;
+    .MuiTextField-root {
+      width: 100%;
+
+      .MuiInputBase-input {
+        color: #ffffff;
+      } /* Text Color */
+      .MuiInputLabel-root {
+        color: #64748b;
+      } /* Label Color */
+
+      .MuiOutlinedInput-root {
+        background-color: rgba(255, 255, 255, 0.02);
+        fieldset {
+          border-color: rgba(255, 255, 255, 0.1);
+        }
+        &:hover fieldset {
+          border-color: rgba(255, 255, 255, 0.3);
+        }
+        &.Mui-focused fieldset {
+          border-color: #6366f1;
+        }
       }
     }
 
-    fieldset {
-      border-color: #ccc; // Light border
+    .body-form {
+      margin-bottom: 30px !important;
     }
 
-    input,
-    textarea {
-      background-color: #f0f0f0; // Light background
-      color: #050f0b; // Dark text
-      border-color: #ccc; // Light border
+    .button-container {
+      display: flex;
+      justify-content: flex-end;
     }
 
-    .MuiInputLabel-root {
-      color: #777; // Darker label in light mode
-    }
+    .submit-btn {
+      background-color: #6366f1;
+      color: white;
+      padding: 10px 30px;
+      font-weight: 600;
+      text-transform: none;
 
-    .MuiOutlinedInput-root {
-      & fieldset {
-        border-color: #ccc; // Light border
-      }
-      &:hover fieldset {
-        border-color: #555; // Slightly darker hover border
+      &:hover {
+        background-color: #4f46e5;
       }
     }
   }
+}
 
-  label {
-    color: #555; // Darker label
+/* =========================================================
+   2. LIGHT MODE OVERRIDE (ORIGINAL LOGIC)
+   Matches the class 'light-mode' on the parent div in App.tsx
+   ========================================================= */
+.light-mode {
+  #contact {
+    background-color: #f9fafb !important; /* Light BG */
+
+    .section-header {
+      h1 {
+        color: #1e293b !important;
+      } /* Dark Text */
+      p {
+        color: #64748b !important;
+      }
+    }
+
+    /* Light Card */
+    .contact-card-wrapper {
+      background: #ffffff !important;
+      border: 1px solid rgba(0, 0, 0, 0.08) !important;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+
+      &:hover {
+        border-color: rgba(99, 102, 241, 0.4);
+      }
+    }
+
+    /* Material UI Overrides (Light) */
+    .contact-form {
+      .MuiTextField-root {
+        .MuiInputBase-input {
+          color: #1e293b !important;
+        } /* Dark Input Text */
+        .MuiInputLabel-root {
+          color: #64748b !important;
+        }
+
+        .MuiOutlinedInput-root {
+          background-color: #f8fafc !important; /* Light Input BG */
+          fieldset {
+            border-color: rgba(0, 0, 0, 0.1) !important;
+          }
+          &:hover fieldset {
+            border-color: rgba(0, 0, 0, 0.25) !important;
+          }
+          &.Mui-focused fieldset {
+            border-color: #6366f1 !important;
+          }
+        }
+      }
+    }
   }
 }
 
-body.light-mode{
-    background-color: white;
-    color: black;
-}
-
-#contact.light-mode{
-    background-color: white;
-    color: black;
+/* Responsive */
+@media (max-width: 768px) {
+  #contact {
+    padding: 60px 5%;
+  }
+  .form-flex {
+    flex-direction: column;
+    gap: 0;
+  }
+  .MuiTextField-root {
+    margin-bottom: 20px;
+  }
+  .submit-btn {
+    width: 100%;
+  }
 }
