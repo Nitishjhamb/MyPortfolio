@@ -12,7 +12,7 @@ const educationData = [
   {
     id: "mca",
     year: "2023 — 2025",
-    degree: "MCA (Cloud & DevOps)",
+    degree: "Master's",
     institute: "Chandigarh University",
     summary:
       "Advanced specialization in scalable cloud architectures and automation.",
@@ -22,7 +22,7 @@ const educationData = [
   {
     id: "bca",
     year: "2019 — 2022",
-    degree: "BCA",
+    degree: "Bachelor's",
     institute: "Tirupati College",
     summary:
       "Solid foundation in software development and database management.",
