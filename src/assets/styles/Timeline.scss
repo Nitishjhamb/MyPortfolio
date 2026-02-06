@@ -1,6 +1,5 @@
-// Variables synced with your project section
 :root {
-  --edu-bg: #0b0f1a; // Match your background
+  --edu-bg: #0b0f1a;
   --edu-panel: #161b2a;
   --edu-text: #ffffff;
   --edu-muted: #94a3b8;
@@ -29,10 +28,8 @@
     .project-title {
       font-size: 2.5rem;
       font-weight: 800;
-      color: var(--proj-title); /* Auto-switches */
       margin-bottom: 10px;
       letter-spacing: -1px;
-      transition: color 0.3s ease;
     }
 
     .title-underline {
@@ -72,7 +69,7 @@
     .nav-text {
       display: flex;
       flex-direction: column;
-      .nav-degree {
+      .nav-degree-type {
         font-weight: 600;
         font-size: 0.9rem;
       }
@@ -92,7 +89,7 @@
       .nav-icon {
         color: var(--accent);
       }
-      .nav-degree {
+      .nav-degree-type {
         color: var(--edu-text);
       }
     }
@@ -103,33 +100,52 @@
   background: var(--edu-panel);
   border-radius: 16px;
   border: 1px solid var(--edu-border);
-  display: flex;
-  align-items: center;
   padding: 50px;
 
   .panel-inner {
     animation: slideIn 0.3s ease-out;
-    .accent-label {
-      font-size: 0.75rem;
-      font-weight: 800;
-      text-transform: uppercase;
-      letter-spacing: 2px;
+
+    .panel-header {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      margin-bottom: 10px;
+
+      .accent-label {
+        font-size: 0.75rem;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+      }
+
+      // .degree-type-tag {
+      //   font-size: 0.7rem;
+      //   background: rgba(255, 255, 255, 0.05);
+      //   padding: 2px 10px;
+      //   border-radius: 50px;
+      //   color: var(--edu-muted);
+      //   border: 1px solid var(--edu-border);
+      // }
     }
+
     h2 {
-      font-size: 2rem;
-      margin: 10px 0;
+      font-size: 2.2rem;
+      margin: 5px 0;
+      font-weight: 800;
     }
+
     h3 {
-      font-size: 1.1rem;
+      font-size: 1.2rem;
       color: var(--edu-muted);
       font-weight: 400;
-      margin-bottom: 15px;
+      margin-bottom: 20px;
     }
+
     p {
       color: var(--edu-muted);
-      font-size: 1rem;
-      max-width: 500px;
-      line-height: 1.6;
+      font-size: 1.05rem;
+      max-width: 600px;
+      line-height: 1.7;
     }
   }
 }
@@ -155,6 +171,7 @@
     padding-bottom: 10px;
     .nav-item {
       flex: 0 0 auto;
+      padding: 12px 15px;
       .nav-year {
         display: none;
       }
@@ -162,6 +179,8 @@
   }
   .display-panel {
     padding: 30px;
-    min-height: 250px;
+    h2 {
+      font-size: 1.7rem;
+    }
   }
 }
